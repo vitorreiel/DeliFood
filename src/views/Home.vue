@@ -1,18 +1,21 @@
 <template>
     <div>
         <section class="items">
-            <h4>Selecione os produtos</h4>
+            <h3>Selecione os produtos</h3>
             <div v-for="product in products" class="product" @click="product.active = !product.active" :class="{ selected : product.active }">
                 <div class="photo">
                     <img :src="product.photo">
                 </div>
                 <div class="description">
                     <span class="name"> {{ product.name }} </span>
-                    <span class="price"> {{ `${this.monetary} ${product.price}` }} </span>
+                    <span class="complements"> {{ product.complements }} </span>
+                </div>
+                <div class="price">
+                    <span> {{ `${this.monetary} ${product.price}` }} </span>
                     <div class="quantity-area" v-if="product.active">
-                        <button @click.stop="product.quantity--" :disabled="product.quantity <=1">-</button>
+                        <button class="button-1" @click.stop="product.quantity--" :disabled="product.quantity <=1">-</button>
                         <span class="quantity"> {{ product.quantity }} </span>
-                        <button @click.stop="product.quantity++">+</button>
+                        <button class="button-2" @click.stop="product.quantity++">+</button>
                     </div>
                 </div>
             </div>
@@ -47,108 +50,7 @@
         </section>
     </div>
 </template>
-<style>
-body {
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
-}
 
-div > section.items h4 {
-    text-align: center;
-    margin-top: 0;
-    width: 100%;
-}
-div {
-    display: flex;
-    justify-content: center;
-    align-items:flex-start;
-    flex-wrap: wrap;
-    padding-top: 20px;
-}
-
-div > section.items {
-    display: flex;
-    flex-wrap: wrap;
-    border: 1px solid lightgrey;
-    padding: 20px;
-    max-width: 500px;
-    min-width: 300px;
-    justify-content: center;
-    
-}
-
-section.items .product {
-    border: 1px solid lightgrey;
-    margin: 6px;
-    flex: 0 0 calc(33.333% - 24px);
-    cursor: pointer;
-    text-align: center;
-}
-
-section.items .product.selected {
-    border: 2px solid rgb(29, 134, 233);
-
-}
-
-section.items .photo img {
-    max-width: 90px;
-}
-
-section.items .description {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    font-size: 11px;
-    line-height: 15px;
-}
-
-section.items  .description .price {
-    font-weight: bold;
-    margin: 4px auto;
-}
-
-section.items  .description .quantity-area {
-    margin: 8px auto;
-    height: 14px;
-}
-
-section.items  .description .quantity-area button {
-    width: 16px;
-    height: 16px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-section.items  .description .quantity-area .quantity {
-    font-weight: bold;
-    margin: 0 4px;
-}
-
-
-section.summary {
-    background-color: rgb(245, 245, 245);
-    padding: 20px;
-    min-height: 200px;
-    min-width: 200px;
-    text-align: center;
-}
-
-section.summary table {
-    width: 100%;
-    padding-top: 12px;
-    font-size: 11px;
-    margin: auto;
-}
-
-section.summary table tbody tr:last-of-type th {
-    border-top: 1px solid black;
-    padding-top: 4px;
-}
-
-</style>
 <script>
     import { products } from "../utils/products"
     export default {
@@ -175,3 +77,209 @@ section.summary table tbody tr:last-of-type th {
         }
     }
 </script>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    div > section.items h4 {
+        text-align: center;
+        margin-top: 0;
+        width: 100%;
+    }
+    div {
+        display: flex;
+        justify-content: center;
+        align-items:flex-start;
+        flex-wrap: wrap;
+        padding-top: 20px;
+    }
+
+    div > section.items {
+        display: flex;
+        flex-wrap: wrap;
+        border: 1px solid lightgrey;
+        padding: 20px;
+        max-width: 500px;
+        min-width: 300px;
+        max-height: 620px;
+        overflow-y: scroll;
+        justify-content: center;
+        background-color: #ffffff;
+        border-radius: 6px;
+    }
+
+    section.items .product {
+        border: 1px solid lightgrey;
+        margin: 10px;
+        flex: 100%;
+        cursor: pointer;
+        text-align: center;
+        border-radius: 6px;
+    }
+
+    section.items .product.selected {
+        border: 2px solid rgb(29, 134, 233);
+    }
+
+    section.items .photo img {
+        max-width: 100px;
+        margin-top: -30%;
+        margin-left: 10px;
+    }
+
+    section.items .description {
+        display: flex;
+        flex-direction: column;
+        margin-right: auto;
+        margin-left: 12px;
+    }
+
+    section.items .complements {
+        color: gray;
+        padding-top: 10px;
+        font-size: 13px;
+        max-width: 215px;
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    section.items .price {
+        font-weight: bold;
+        margin-right: 20px;
+        margin-bottom: 10px;
+    }
+
+    section.items .price .quantity-area {
+        margin-top: 6px;
+        margin-left: -67%;
+        margin-right: -35px;
+        margin-bottom: 10px;
+    }
+
+    section.items .price .quantity-area button {
+        width: 18px;
+        height: 18px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    section.items .button-1 {
+        align-items: center;
+        background-color: #ffffff;
+        border: 1px solid #e61919;
+        border-radius: .25rem;
+        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+        box-sizing: border-box;
+        color: #e61919;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-weight: 600;
+        justify-content: center;
+        line-height: 1.25;
+        margin: 0;
+        min-height: 1rem;
+        padding: calc(0.8rem - 1px) calc(0.8rem - 1px);
+        position: relative;
+        text-decoration: none;
+        transition: all 250ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: baseline;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    section.items .button-1:hover, .button-1:focus {
+        border-color: #e61919;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+        color: #e61919;
+    }
+
+    section.items .button-1:hover {
+        transform: translateY(-1px);
+    }
+
+    section.items .button-1:active {
+        background-color: #F0F0F1;
+        border-color: rgba(0, 0, 0, 0.15);
+        box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+        color: rgba(0, 0, 0, 0.65);
+        transform: translateY(0);
+    }
+
+    section.items .button-2 {
+        align-items: center;
+        background-color: #e61919;
+        border: 1px solid #e61919;
+        border-radius: .25rem;
+        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+        box-sizing: border-box;
+        color: #ffffff;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-weight: 600;
+        justify-content: center;
+        line-height: 1.25;
+        margin: 0;
+        min-height: 1rem;
+        padding: calc(0.8rem - 1px) calc(0.8rem - 1px);
+        position: relative;
+        text-decoration: none;
+        transition: all 250ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: baseline;
+    }
+
+    section.items .button-2:hover, .button-2:focus {
+        border-color: #e61919;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+        color: #F0F0F1;
+    }
+
+    section.items .button-2:hover {
+        transform: translateY(-1px);
+    }
+
+    section.items .button-2:active {
+        background-color: #F0F0F1;
+        border-color: rgba(0, 0, 0, 0.15);
+        box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+        color: rgba(0, 0, 0, 0.65);
+        transform: translateY(0);
+    }   
+
+    section.items .price .quantity-area .quantity {
+        font-weight: bold;
+        margin: 3px 6px;
+    }
+
+    section.summary {
+        background-color: rgb(245, 245, 245);
+        padding: 20px;
+        min-height: 200px;
+        min-width: 200px;
+        text-align: center;
+    }
+
+    section.summary table {
+        width: 100%;
+        padding-top: 12px;
+        font-size: 11px;
+        margin: auto;
+    }
+
+    section.summary table tbody tr:last-of-type th {
+        border-top: 1px solid black;
+        padding-top: 4px;
+    }
+</style>

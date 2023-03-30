@@ -1,0 +1,101 @@
+<template>
+    <div>
+        <section class="formLogin">
+            <h1>Login</h1>
+            <img src="../../public/img/logo_inicial.png" class="icon_login" />
+            <label for="email">E-mail</label>
+            <input type="email" placeholder="Digite seu e-mail" autofocus="true" />
+            <label for="password">Senha</label>
+            <input type="password" placeholder="Digite sua senha" />
+            <router-link to="/">
+                <button class="btn">Acessar</button>
+            </router-link>
+        </section>
+    </div>
+</template>
+
+<script></script>
+
+<style>
+    body {
+        background-color: #e61919;
+        width: 100%;
+        height: 100%;
+    }
+
+    .formLogin {
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border-radius: 7px;
+        padding: 40px;
+        box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
+        gap: 5px
+    }
+
+    .formLogin h1 {
+        font-size: 2.3em;
+    }
+
+    .formLogin p {
+        display: inline-block;
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 25px;
+    }
+
+    .formLogin input {
+        padding: 15px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        margin-top: 5px;
+        border-radius: 4px;
+        transition: all linear 160ms;
+        outline: none;
+    }
+
+
+    .formLogin input:focus {
+        border: 1px solid #e61919;
+    }
+
+    .formLogin label {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .formLogin a {
+        display: inline-block;
+        margin-bottom: 20px;
+        font-size: 13px;
+        color: #555;
+        transition: all linear 160ms;
+    }
+
+    .icon_login {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10%;
+        width: 30%;
+        height: 30%;
+    }
+
+    .btn {
+        background-color: #e61919;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 550;
+        border: none !important;
+        transition: all linear 160ms;
+        margin: 0 !important;
+        width: 100%;
+        height: 6vh;
+        border-radius: 5px;
+    }
+
+    .btn:hover {
+        transform: scale(1.05);
+        background-color: #cc0000;
+    }
+</style>
