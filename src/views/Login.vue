@@ -2,7 +2,7 @@
     <div>
         <section class="formLogin">
             <h1>Login</h1>
-            <img src="../../public/img/logo_inicial.png" class="icon_login" />
+            <img src="img/logo_inicial.png" class="icon_login" />
             <label for="email">E-mail</label>
             <input type="email" placeholder="Digite seu e-mail" autofocus="true" />
             <label for="password">Senha</label>

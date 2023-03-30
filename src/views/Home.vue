@@ -47,6 +47,9 @@
                     </tr>
                 </tbody>
             </table>
+            <router-link to="/address">
+                <button class="btn">Confirmar</button>
+            </router-link>
         </section>
     </div>
 </template>
@@ -281,5 +284,23 @@
     section.summary table tbody tr:last-of-type th {
         border-top: 1px solid black;
         padding-top: 4px;
+        padding-bottom: 30px;
+    }
+
+    .btn {
+        background-color: #e61919;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 550;
+        border: none !important;
+        transition: all linear 160ms;
+        width: 100%;
+        height: 6vh;
+        border-radius: 5px;
+    }
+
+    .btn:hover {
+        transform: scale(1.05);
+        background-color: #cc0000;
     }
 </style>
