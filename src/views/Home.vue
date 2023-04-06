@@ -87,11 +87,6 @@
         font-family: 'Open Sans', sans-serif;
     }
 
-    div > section.items h4 {
-        text-align: center;
-        margin-top: 0;
-        width: 100%;
-    }
     div {
         display: flex;
         justify-content: center;
