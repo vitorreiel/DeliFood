@@ -28,6 +28,7 @@
         flex-direction: column;
         background-color: #fff;
         border-radius: 7px;
+        max-width: 460px;
         padding: 40px;
         box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
         gap: 5px

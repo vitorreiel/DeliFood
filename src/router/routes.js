@@ -1,6 +1,7 @@
 import Home from "@/views/Home.vue";
 import Login from "@/views/Login.vue";
 import Address from "@/components/Address.vue";
+import Confirm from "@/components/Confirm.vue";
 
 const routes = [
     {
@@ -17,6 +18,11 @@ const routes = [
         path: "/address",
         name: "Address",
         component: Address,
+    },
+    {
+        path: "/confirm",
+        name: "Confirm",
+        component: Confirm,
     }
 ];
 

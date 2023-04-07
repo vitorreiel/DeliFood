@@ -2,19 +2,21 @@
     <div>
         <section class="add">
             <h3>Informe o endereço de entrega</h3>
-            <div v-for="address in addresses" class="address" @click="onSelectAddress" :class="{ selected : address.active }">
-                <div class="description">
-                    <span class="Rua"> {{ address.rua }} </span>
-                    <span class="Bairro"> {{ address.bairro }} </span>
-                    <span class="Numero"> {{ address.numero }} </span>
-                    <span class="Complemento"> {{ address.complemento }} </span>
+            <div class="container-address">
+                <div v-for="address in addresses" class="address" @click="selecionar(address)" :class="{ selected : address.active }">
+                    <div class="description-address">
+                        <span class="Rua">Rua: {{ address.rua }} </span>
+                        <span class="Bairro">Bairro: {{ address.bairro }} </span>
+                        <span class="Numero">N°: {{ address.numero }} </span>
+                        <span class="Complemento">Complemento: {{ address.complemento }} </span>
+                    </div>
                 </div>
             </div>
             <div class="buttons-container">
                 <router-link to="/address">
                     <button class="btn">+ Endereço</button>
                 </router-link>
-                <router-link to="/address">
+                <router-link to="/confirm">
                     <button class="botao">Confirmar</button>
                 </router-link>
             </div>
@@ -27,51 +29,63 @@
     export default {
         data() {
             return {
-                addresses: addresses
+                addresses
             }
         },
         methods: {
-            onSelectAddress() {
-                
+            selecionar: function(address) {
+                const activeAdress = this.addresses.find(item => item.active);
+                if (activeAdress){
+                   activeAdress.active = false 
+                }
+                address.active = !address.active
             }
         }
     }
 </script>
 
-<style scoped>
+<style>
     body {
         margin: 0;
         font-family: 'Open Sans', sans-serif;
     }
 
-    div > section.add h3 {
-        text-align: center;
-        margin-top: 0;
-        width: 100%;
-    }
     div {
         display: flex;
         justify-content: center;
         align-items:flex-start;
         flex-wrap: wrap;
-        padding: 0;
+        padding-top: 20px;
     }
 
-    div > section.add{
+    .add {
         display: flex;
         flex-wrap: wrap;
         border: 1px solid lightgrey;
         padding: 20px;
         max-width: 500px;
         min-width: 300px;
-        max-height: 620px;
-        overflow-y: scroll;
         justify-content: center;
         background-color: #ffffff;
         border-radius: 6px;
+        box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
     }
 
-    section.add .address {
+    .container-address{
+        overflow-y: scroll;
+        max-height: 480px;
+    }
+
+    .container-address::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .container-address::-webkit-scrollbar-thumb {
+        background-color: #A9A9A9;
+        border-radius: 20px;
+    }
+
+    .address {
         border: 1px solid lightgrey;
         margin: 10px;
         flex: 100%;
@@ -80,15 +94,18 @@
         border-radius: 6px;
     }
 
-    section.add .address.selected {
+    .address.selected {
         border: 2px solid rgb(29, 134, 233);
     }
 
-    section.add .description {
+    .description-address {
         display: flex;
         flex-direction: column;
         margin-right: auto;
-        margin-left: 12px;
+        margin-left: 30px;
+        margin-top: -20px;
+        margin-bottom: 20px;
+        line-height: 1.5em;
     }
     .btn {
         background-color: #e61919;
@@ -97,8 +114,8 @@
         font-weight: 550;
         border: none !important;
         transition: all linear 160ms;
-        width: 100%;
-        height: 6vh;
+        width: 150px;
+        height: 45px;
         border-radius: 5px;
     }
 
@@ -114,8 +131,8 @@
         font-weight: 550;
         border: none !important;
         transition: all linear 160ms;
-        width: 100%;
-        height: 6vh;
+        width: 150px;
+        height: 45px;
         border-radius: 5px;
 
     }

@@ -27,7 +27,7 @@
                 <thead>
                     <tr>
                         <th>Item</th>
-                        <th>Total</th>
+                        <th>Valor</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,8 +59,8 @@
     export default {
         data() {
             return {
-                products: products,
-                monetary: "R$"
+                monetary: "R$",
+                products
             }
         },
         methods: {
@@ -90,52 +90,61 @@
     div {
         display: flex;
         justify-content: center;
-        align-items:flex-start;
+        align-items: flex-start;
         flex-wrap: wrap;
         padding-top: 20px;
     }
 
-    div > section.items {
+    .items {
         display: flex;
         flex-wrap: wrap;
-        border: 1px solid lightgrey;
+        border-radius: 7px;
         padding: 20px;
         max-width: 500px;
         min-width: 300px;
         max-height: 620px;
         overflow-y: scroll;
         justify-content: center;
-        background-color: #ffffff;
-        border-radius: 6px;
+        background-color: #fff;
+        box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
     }
 
-    section.items .product {
+    .items::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .items::-webkit-scrollbar-thumb {
+        background-color: #A9A9A9;
+        border-radius: 20px;
+    }
+
+    .product {
         border: 1px solid lightgrey;
         margin: 10px;
         flex: 100%;
         cursor: pointer;
         text-align: center;
-        border-radius: 6px;
+        border-radius: 7px;
     }
 
-    section.items .product.selected {
+    .product.selected {
         border: 2px solid rgb(29, 134, 233);
     }
 
-    section.items .photo img {
+    .photo img {
         max-width: 100px;
         margin-top: -30%;
         margin-left: 10px;
     }
 
-    section.items .description {
+    .description {
         display: flex;
         flex-direction: column;
         margin-right: auto;
         margin-left: 12px;
     }
 
-    section.items .complements {
+    .complements {
         color: gray;
         padding-top: 10px;
         font-size: 13px;
@@ -144,20 +153,20 @@
         margin-bottom: 20px;
     }
 
-    section.items .price {
+    .price {
         font-weight: bold;
         margin-right: 20px;
         margin-bottom: 10px;
     }
 
-    section.items .price .quantity-area {
+    .price .quantity-area {
         margin-top: 6px;
         margin-left: -67%;
         margin-right: -35px;
         margin-bottom: 10px;
     }
 
-    section.items .price .quantity-area button {
+    .price .quantity-area button {
         width: 18px;
         height: 18px;
         display: inline-flex;
@@ -165,7 +174,7 @@
         align-items: center;
         cursor: pointer;
     }
-    section.items .button-1 {
+    .button-1 {
         align-items: center;
         background-color: #ffffff;
         border: 1px solid #e61919;
@@ -194,17 +203,17 @@
         align-items: center;
     }
 
-    section.items .button-1:hover, .button-1:focus {
+    .button-1:hover, .button-1:focus {
         border-color: #e61919;
         box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
         color: #e61919;
     }
 
-    section.items .button-1:hover {
+    .button-1:hover {
         transform: translateY(-1px);
     }
 
-    section.items .button-1:active {
+    .button-1:active {
         background-color: #F0F0F1;
         border-color: rgba(0, 0, 0, 0.15);
         box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
@@ -212,7 +221,7 @@
         transform: translateY(0);
     }
 
-    section.items .button-2 {
+    .button-2 {
         align-items: center;
         background-color: #e61919;
         border: 1px solid #e61919;
@@ -238,17 +247,17 @@
         vertical-align: baseline;
     }
 
-    section.items .button-2:hover, .button-2:focus {
+    .button-2:hover, .button-2:focus {
         border-color: #e61919;
         box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
         color: #F0F0F1;
     }
 
-    section.items .button-2:hover {
+    .button-2:hover {
         transform: translateY(-1px);
     }
 
-    section.items .button-2:active {
+    .button-2:active {
         background-color: #F0F0F1;
         border-color: rgba(0, 0, 0, 0.15);
         box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
@@ -256,27 +265,30 @@
         transform: translateY(0);
     }   
 
-    section.items .price .quantity-area .quantity {
+    .price .quantity-area .quantity {
         font-weight: bold;
         margin: 3px 6px;
     }
 
-    section.summary {
+    .summary {
         background-color: rgb(245, 245, 245);
         padding: 20px;
         min-height: 200px;
-        min-width: 200px;
+        min-width: 250px;
         text-align: center;
+        box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
+        margin-left: 20px;
+        border-radius: 7px;
     }
 
-    section.summary table {
+    .summary table {
         width: 100%;
         padding-top: 12px;
-        font-size: 11px;
+        font-size: 13px;
         margin: auto;
     }
 
-    section.summary table tbody tr:last-of-type th {
+    .summary table tbody tr:last-of-type th {
         border-top: 1px solid black;
         padding-top: 4px;
         padding-bottom: 30px;
@@ -289,8 +301,8 @@
         font-weight: 550;
         border: none !important;
         transition: all linear 160ms;
-        width: 100%;
-        height: 6vh;
+        width: 150px;
+        height: 45px;
         border-radius: 5px;
     }
 

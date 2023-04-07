@@ -15,6 +15,7 @@ Uma empresa no ramo de entrega de refeições, por meio da internet.
    
    | Nome | Matrícula | Curso |
    |--- |--- |--- |
+   | Larissa Kellen da Silva Saraiva | 496243 | Engenharia de Software |
    | Maria Isadora Gonçalves Martins de Oliveira | 496423 | Redes de Computadores |
    | Vitor Reiel Moura de Lima | 499077 | Redes de Computadores | 
    
@@ -31,6 +32,7 @@ Uma empresa no ramo de entrega de refeições, por meio da internet.
     - Produtos
     - Restaurantes
     - Endereços
+    - Pedidos 
 <br>
 
 ---
@@ -41,7 +43,7 @@ Uma empresa no ramo de entrega de refeições, por meio da internet.
 
     - O usuário não registrado, pode conferir o cardápio fornecidos pelos restaurantes cadastrados.
     - O usuário registrado, poderá selecionar seu pedido no restaurante desejado, selecionar o endereço de entrega e efetuar o pedido.
-    - O administrador terá total controle sobre os usuários e restaurantes cadastrados, podendo então adicionar, remover e editá-los se assim desejar.
+    - O administrador terá total controle sobre os usuários, restaurantes e pedidos realizados, podendo então adicionar, remover e editá-los se assim desejar.
 <br>
 
 ---
@@ -91,7 +93,7 @@ chmod +x install-docker.sh
 ./install-docker.sh
 ```
 
-##### *Nota: Se você não estiver como usuário root no terminal, será solicitado inserir sua senha root na 3° Etapa para que as instalações possam ser feitas.*
+> ##### *Nota: Se você não estiver como usuário root no terminal, será solicitado inserir sua senha root na 3° Etapa para que as instalações possam ser feitas.*
 <br>
 
 ---

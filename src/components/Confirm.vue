@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="items">
+        <section class="confirm">
             <h3>Selecione os produtos</h3>
             <div v-for="product in products" class="product" @click="product.active = !product.active" :class="{ selected : product.active }">
                 <div class="photo">
