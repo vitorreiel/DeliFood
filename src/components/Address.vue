@@ -2,14 +2,12 @@
     <div>
         <section class="add">
             <h3>Informe o endereço de entrega</h3>
-            <div class="container-address">
-                <div v-for="address in addresses" class="address" @click="selecionar(address)" :class="{ selected : address.active }">
-                    <div class="description-address">
-                        <span class="Rua">Rua: {{ address.rua }} </span>
-                        <span class="Bairro">Bairro: {{ address.bairro }} </span>
-                        <span class="Numero">N°: {{ address.numero }} </span>
-                        <span class="Complemento">Complemento: {{ address.complemento }} </span>
-                    </div>
+            <div v-for="address in addresses" class="address" @click="onSelectAddress(address)" :class="{ selected : address.active }">
+                <div class="description">
+                    <span class="Rua"> Rua: {{ address.rua }} </span>
+                    <span class="Bairro"> Bairro: {{ address.bairro }} </span>
+                    <span class="Numero"> Número: {{ address.numero }} </span>
+                    <span class="Complemento"> Complemento: {{ address.complemento }} </span>
                 </div>
             </div>
             <div class="buttons-container">
@@ -21,6 +19,16 @@
                 </router-link>
             </div>
         </section>
+
+        <section v-if="onSelectAddress">  
+        <div>
+            <span> {{ onSelectAddress.rua }}</span> 
+            <span> {{ onSelectAddress.bairro }}</span> 
+            <span> {{ onSelectAddress.numero }}</span>
+            <span> {{ onSelectAddress.complemento }}</span>
+        </div>
+        </section>
+
     </div>
 </template>
 
@@ -28,64 +36,57 @@
     import { addresses } from "../utils/addresses"
     export default {
         data() {
-            return {
-                addresses
+            return { 
+                addresses: addresses
             }
         },
-        methods: {
-            selecionar: function(address) {
-                const activeAdress = this.addresses.find(item => item.active);
-                if (activeAdress){
-                   activeAdress.active = false 
-                }
-                address.active = !address.active
+        methods: { // Função para selecionar o endereço
+            onSelectAddress(address) {
+                this.addresses.forEach( a => {
+                    a.active = false;
+                });
+                address.active = true;
+                
+                this.selectedAddress = address;
             }
         }
     }
 </script>
 
-<style>
+<style scoped>
     body {
         margin: 0;
         font-family: 'Open Sans', sans-serif;
     }
 
+    div > section.add h3 {
+        text-align: center;
+        margin-top: 0;
+        width: 100%;
+    }
     div {
         display: flex;
         justify-content: center;
         align-items:flex-start;
         flex-wrap: wrap;
-        padding-top: 20px;
+        padding: 0;
     }
 
-    .add {
+    div > section.add{
         display: flex;
         flex-wrap: wrap;
         border: 1px solid lightgrey;
         padding: 20px;
         max-width: 500px;
         min-width: 300px;
+        max-height: 620px;
+        overflow-y: scroll;
         justify-content: center;
         background-color: #ffffff;
         border-radius: 6px;
-        box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
     }
 
-    .container-address{
-        overflow-y: scroll;
-        max-height: 480px;
-    }
-
-    .container-address::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    .container-address::-webkit-scrollbar-thumb {
-        background-color: #A9A9A9;
-        border-radius: 20px;
-    }
-
-    .address {
+    section.add .address {
         border: 1px solid lightgrey;
         margin: 10px;
         flex: 100%;
@@ -94,18 +95,15 @@
         border-radius: 6px;
     }
 
-    .address.selected {
+    section.add .address.selected {
         border: 2px solid rgb(29, 134, 233);
     }
 
-    .description-address {
+    section.add .description {
         display: flex;
         flex-direction: column;
         margin-right: auto;
-        margin-left: 30px;
-        margin-top: -20px;
-        margin-bottom: 20px;
-        line-height: 1.5em;
+        margin-left: 12px;
     }
     .btn {
         background-color: #e61919;
@@ -114,8 +112,8 @@
         font-weight: 550;
         border: none !important;
         transition: all linear 160ms;
-        width: 150px;
-        height: 45px;
+        width: 100%;
+        height: 6vh;
         border-radius: 5px;
     }
 
@@ -131,8 +129,8 @@
         font-weight: 550;
         border: none !important;
         transition: all linear 160ms;
-        width: 150px;
-        height: 45px;
+        width: 100%;
+        height: 6vh;
         border-radius: 5px;
 
     }

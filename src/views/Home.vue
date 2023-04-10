@@ -63,7 +63,7 @@
                 products
             }
         },
-        methods: {
+        methods: { 
             total: function() {
                 var total = this.products.reduce((acc, item) => { 
                     // método reduce: ele executa uma função para cada elemento do array.
