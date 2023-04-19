@@ -15,7 +15,7 @@
                     <button class="btn">+ Endereço</button>
                 </router-link>
                 <router-link to="/confirm">
-                    <button class="botao">Confirmar</button>
+                    <button class="botao" @click.>Confirmar</button>
                 </router-link>
             </div>
         </section>
@@ -37,7 +37,7 @@
     export default {
         data() {
             return { 
-                addresses: addresses
+                addresses
             }
         },
         methods: { // Função para selecionar o endereço
@@ -59,20 +59,7 @@
         font-family: 'Open Sans', sans-serif;
     }
 
-    div > section.add h3 {
-        text-align: center;
-        margin-top: 0;
-        width: 100%;
-    }
-    div {
-        display: flex;
-        justify-content: center;
-        align-items:flex-start;
-        flex-wrap: wrap;
-        padding: 0;
-    }
-
-    div > section.add{
+    .add {
         display: flex;
         flex-wrap: wrap;
         border: 1px solid lightgrey;
@@ -85,8 +72,13 @@
         background-color: #ffffff;
         border-radius: 6px;
     }
+    .add h3 {
+        text-align: center;
+        margin-top: 0;
+        width: 100%;
+    }
 
-    section.add .address {
+   .address {
         border: 1px solid lightgrey;
         margin: 10px;
         flex: 100%;
@@ -95,11 +87,11 @@
         border-radius: 6px;
     }
 
-    section.add .address.selected {
+    .address.selected {
         border: 2px solid rgb(29, 134, 233);
     }
 
-    section.add .description {
+   .description {
         display: flex;
         flex-direction: column;
         margin-right: auto;
@@ -132,7 +124,6 @@
         width: 100%;
         height: 6vh;
         border-radius: 5px;
-
     }
 
     .botao:hover {

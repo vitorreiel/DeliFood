@@ -12,6 +12,7 @@
                 </thead>
                 <tbody>
                     
+                
                     <tr v-for="product in products">
                         <template v-if="product.active"> <!-- Se algum produto for selecionado, 
                             ele vai exibir o Resumo do pedido e fazer a conta de cada produto
