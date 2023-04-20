@@ -100,6 +100,7 @@
         flex-wrap: wrap;
         border-radius: 7px;
         padding: 20px;
+        margin-right: 20px;
         max-width: 500px;
         min-width: 300px;
         max-height: 620px;
@@ -277,7 +278,6 @@
         min-width: 250px;
         text-align: center;
         box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
-        margin-left: 20px;
         border-radius: 7px;
     }
 

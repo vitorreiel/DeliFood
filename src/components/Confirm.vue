@@ -31,13 +31,15 @@
              
                 </tbody>
             </table>
+            <ModalConfirm></ModalConfirm>
         </section>
     </div>
 </template>
 
 <script>
     import { addresses } from "../utils/addresses"
-import { products } from "../utils/products"
+    import { products } from "../utils/products"
+    import ModalConfirm from "./Modal-confirm.vue"
     export default {
         data() { 
             return { 
@@ -46,6 +48,9 @@ import { products } from "../utils/products"
                 monetary: "R$"
 
             }
+        },
+        components: {
+            ModalConfirm,
         },
         methods: {
             // Método para obter o total do pedido
