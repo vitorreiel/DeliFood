@@ -11,9 +11,7 @@
                 </div>
             </div>
             <div class="buttons-container">
-                <router-link to="/address">
-                    <button class="btn">+ Endereço</button>
-                </router-link>
+                <ModalAddress></ModalAddress>
                 <router-link to="/confirm">
                     <button class="botao" @click.>Confirmar</button>
                 </router-link>
@@ -34,12 +32,17 @@
 
 <script>
     import { addresses } from "../utils/addresses"
+import ModalAddress from "./Modal-address.vue";
     export default {
         data() {
             return { 
                 addresses
             }
         },
+        components: {
+    ModalAddress,
+    ModalAddress
+},
         methods: { // Função para selecionar o endereço
             onSelectAddress(address) {
                 this.addresses.forEach( a => {
@@ -96,22 +99,6 @@
         flex-direction: column;
         margin-right: auto;
         margin-left: 12px;
-    }
-    .btn {
-        background-color: #e61919;
-        color: #fff;
-        font-size: 14px;
-        font-weight: 550;
-        border: none !important;
-        transition: all linear 160ms;
-        width: 100%;
-        height: 6vh;
-        border-radius: 5px;
-    }
-
-    .btn:hover {
-        transform: scale(1.05);
-        background-color: #cc0000;
     }
 
     .botao {
