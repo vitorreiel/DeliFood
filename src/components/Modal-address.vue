@@ -1,9 +1,7 @@
 <template>
   <div id="myModal" class="modal">
       <div class="modal-content">
-        <textarea name="" id="end" cols="30" rows="10">
-          Digite o seu endereço aqui...
-        </textarea>
+        <AddressForm></AddressForm>
         <span class="close">&times;</span>
       </div>
     </div>
@@ -13,31 +11,28 @@
 
 <script>
 import router from '../router/index';
+import AddressForm from './AddressForm.vue';
 export default {
-  mounted() {
-  // Encontra o botão para abrir o modal
-    var btn = document.getElementById("add-address");
-    btn.addEventListener('click', function() {
-    modal.style.display = "block";
-    });
-
-  // Encontra o modal
-    var modal = document.getElementById("myModal");
-
-  // Encontra o botão para fechar o modal
-    var span = document.getElementsByClassName("close")[0];
-    span.addEventListener('click', function() {
-    modal.style.display = "none";
-    router.push("/");
-    });
-
-    window.addEventListener('click', function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-        router.push("/");
-      }
-    });
-  } 
+    mounted() {
+        // Encontra o botão para abrir o modal
+        var btn = document.getElementById("add-address");
+        btn.addEventListener("click", function () {
+            modal.style.display = "block";
+        });
+        // Encontra o modal
+        var modal = document.getElementById("myModal");
+        // Encontra o botão para fechar o modal
+        var span = document.getElementsByClassName("close")[0];
+        span.addEventListener("click", function () {
+            modal.style.display = "none";
+        });
+        window.addEventListener("click", function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+    },
+    components: { AddressForm }
 }
 </script>
 
@@ -62,15 +57,17 @@ export default {
   padding: 20px;
   border: 1px solid #888;
   width: 25%;
+  position: relative;
 }
 
 /* Estilo do botão de fechar */
 .close {
   color: #aaaaaa;
-  float: right;
+  position: absolute;
+  top: 10px;  
+  right: 25px;
   font-size: 28px;
   font-weight: bold;
-  margin-left: 10px;
 }
 
 .close:hover,
