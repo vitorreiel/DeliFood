@@ -1,8 +1,13 @@
 version: '3'
 services:
+  web:
+    build: .
+    image: 'app-web-delifood/vuejs:latest'
+    container_name: delifood
+    ports:
+      -  '3000:3000'
   strapi:
     container_name: 'strapi'
-#    build: .
     image: 'strapi/strapi:alpine'
     restart: unless-stopped
     env_file: .env
@@ -15,10 +20,8 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       NODE_ENV: ${NODE_ENV}
     volumes:
-#      - ./config:/opt/app/config
       - ./src:/opt/app/src
-#      - ./package.json:/opt/package.json
-#      - ./public/uploads:/opt/app/public/uploads
+      - ./package.json:/opt/package.json
     ports:
       - '1337:1337'
     networks:
