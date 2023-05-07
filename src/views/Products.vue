@@ -147,6 +147,7 @@
     }
 
     .description {
+        padding: 0;
         display: flex;
         flex-direction: column;
         margin-right: auto;

@@ -82,6 +82,7 @@ import ModalAddress from "./Modal-address.vue";
     }
 
    .address {
+        padding: 15px 10px;
         border: 1px solid lightgrey;
         margin: 10px;
         flex: 100%;
@@ -95,6 +96,7 @@ import ModalAddress from "./Modal-address.vue";
     }
 
    .description {
+        padding: 0;
         display: flex;
         flex-direction: column;
         margin-right: auto;
