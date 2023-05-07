@@ -3,6 +3,7 @@ import Login from "@/views/Login.vue";
 import Locations from "@/views/Locations.vue";
 import Address from "@/components/Address.vue";
 import Confirm from "@/components/Confirm.vue";
+import NotFound from "@/views/404.vue";
 
 const routes = [
     {
@@ -29,6 +30,11 @@ const routes = [
         path: "/confirm",
         name: "Confirm",
         component: Confirm,
+    },
+    {
+        path: "/:catchAll(.*)",
+        name: "NotFound",
+        component: NotFound
     }
 ];
 
