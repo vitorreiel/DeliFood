@@ -2,6 +2,7 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
           <p>Pedido Confirmado!</p>
+          <img id="gif" src="https://i.pinimg.com/originals/62/dd/c4/62ddc455488a13d67f4198a09dc4bb29.gif" alt="moto">
           <span class="close">&times;</span>
         </div>
       </div>
@@ -49,17 +50,23 @@ export default {
     top: 0;
     width: 100%; /* Largura total */
     height: 100%; /* Altura total */
-    overflow: auto; /* Adiciona rolagem se necessário */
+    overflow: hidden; /* Adiciona rolagem se necessário */
     background-color: rgba(0, 0, 0, 0.4); /* Fundo escuro */
   }
   
   /* Estilo do conteúdo do modal */
   .modal-content {
+    position: relative;
+    top: -50px;
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 25%;
+  }
+
+  .modal-content #gif {
+    width: 60%;
   }
   
   /* Estilo do botão de fechar */
