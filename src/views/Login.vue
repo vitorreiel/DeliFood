@@ -7,7 +7,7 @@
             <input type="email" placeholder="Digite seu e-mail" autofocus="true" />
             <label for="password">Senha</label>
             <input type="password" placeholder="Digite sua senha" />
-            <router-link to="/locations">
+            <router-link to="/home">
                 <button class="btn">Acessar</button>
             </router-link>
         </section>

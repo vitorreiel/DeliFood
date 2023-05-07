@@ -1,5 +1,5 @@
 <template>
-    <h1>Locations works!</h1>
+    <h1>Home works!</h1>
 </template>
 
 <script>

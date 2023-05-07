@@ -1,6 +1,6 @@
 import Products from "@/views/Products.vue";
 import Login from "@/views/Login.vue";
-import Locations from "@/views/Locations.vue";
+import Home from "@/views/Home.vue";
 import Address from "@/components/Address.vue";
 import Confirm from "@/components/Confirm.vue";
 import NotFound from "@/views/404.vue";
@@ -12,9 +12,9 @@ const routes = [
         component: Login,
     },
     {
-        path: "/locations",
-        name: "Locations",
-        component: Locations
+        path: "/home",
+        name: "Home",
+        component: Home
     },
     {
         path: "/products",
