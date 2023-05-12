@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "clientes",
+  "info": {
+    "name": "Clientes"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "login": {
+      "type": "string"
+    },
+    "senha": {
+      "type": "string"
+    }
+  }
+}

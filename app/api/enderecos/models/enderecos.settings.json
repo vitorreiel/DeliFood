@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "enderecos",
+  "info": {
+    "name": "Endereços"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "rua": {
+      "type": "string"
+    },
+    "bairro": {
+      "type": "string"
+    },
+    "numero": {
+      "type": "string"
+    },
+    "complemento": {
+      "type": "string"
+    },
+    "id_cliente": {
+      "type": "string"
+    }
+  }
+}

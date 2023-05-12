@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "produtos",
+  "info": {
+    "name": "Produtos",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string"
+    },
+    "tipo": {
+      "type": "string"
+    },
+    "valor": {
+      "type": "string"
+    },
+    "descricao": {
+      "type": "string"
+    },
+    "imagem": {
+      "type": "string"
+    },
+    "id_restaurante": {
+      "type": "string"
+    }
+  }
+}

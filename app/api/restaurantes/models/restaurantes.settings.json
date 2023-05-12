@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "restaurantes",
+  "info": {
+    "name": "Restaurantes"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string"
+    },
+    "cnpj": {
+      "type": "string"
+    },
+    "rua": {
+      "type": "string"
+    },
+    "bairro": {
+      "type": "string"
+    },
+    "numero": {
+      "type": "string"
+    },
+    "imagem": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "historicos",
+  "info": {
+    "name": "Historicos"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string"
+    },
+    "produtos": {
+      "type": "string"
+    },
+    "endereco": {
+      "type": "string"
+    },
+    "data_hora": {
+      "type": "string"
+    },
+    "id_cliente": {
+      "type": "string"
+    }
+  }
+}

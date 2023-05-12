@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "admins",
+  "info": {
+    "name": "Admins"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "login": {
+      "type": "string"
+    },
+    "senha": {
+      "type": "string"
+    }
+  }
+}
