@@ -1,9 +1,11 @@
 import Products from "@/views/Products.vue";
 import Login from "@/views/Login.vue";
 import Home from "@/views/Home.vue";
+import Administrator from "@/views/Administrator.vue";
+import NotFound from "@/views/404.vue";
 import Address from "@/components/Address.vue";
 import Confirm from "@/components/Confirm.vue";
-import NotFound from "@/views/404.vue";
+
 
 const routes = [
     {
@@ -15,6 +17,11 @@ const routes = [
         path: "/home",
         name: "Home",
         component: Home
+    },
+    {
+        path: "/administrator",
+        name: "Administrator",
+        component: Administrator
     },
     {
         path: "/products",
