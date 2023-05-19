@@ -1,17 +1,21 @@
 <template>
-    <section class="locations-list">
-        <h3>Restaurantes</h3>
-        <router-link :to="location.name === 'El Chancho' ? '/products' : ''" v-for="location in locations" class="location">
-            <div class="photo">
-                <img :src="location.photo">
+    <div class="main-div">
+        <section class="locations-list">
+            <h3>Selecione os produtos</h3>
+            <div v-for="location in locations" class="location">
+                <router-link to="/products" class="location-content">
+                    <div class="photo-restaurante">
+                        <img class="photo-restaurante-action" :src="location.photo">
+                    </div>
+                    <div class="description-restaurante">
+                        <span class="name-restaurante"> {{ location.name }} </span>
+                        <span class="address-restaurante"> {{ location.address }} </span>
+                        <span class="phone-restaurante"> {{ location.phone }} </span>
+                    </div>
+                </router-link>
             </div>
-            <div class="description">
-                <span class="name"> {{ location.name }} </span>
-                <span class="address"> {{ location.address }} </span>
-                <span class="phone"> {{ location.phone }} </span>
-            </div>
-        </router-link>
-    </section>
+        </section>
+    </div>
 </template>
 
 <script>
@@ -25,57 +29,98 @@
     }
 </script>
 
-<style scoped>
+<style>
+    #app, .description-restaurante {
+        display: flex;
+        align-items: flex-start;
+    }
+
     .locations-list {
-        color: black;
-        text-decoration: none;
         display: flex;
         flex-wrap: wrap;
         border-radius: 7px;
         padding: 20px;
+        margin-right: 20px;
         max-width: 500px;
         min-width: 300px;
-        max-height: 620px;
+        max-height: 750px;
         overflow-y: scroll;
         justify-content: center;
-        gap: 10px;
         background-color: #fff;
         box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
     }
 
-    a:-webkit-any-link {
-        color: black;
-        text-decoration: none;
+    .locations-list::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .locations-list::-webkit-scrollbar-thumb {
+        background-color: #A9A9A9;
+        border-radius: 20px;
     }
 
     .location {
-        border: 1px solid lightgrey;
-        padding: 20px 25px;
+        border: 2px solid lightgrey;
+        margin: 10px;
         display: flex;
-        align-items: center;
-        font-size: small;
         flex: 100%;
         cursor: pointer;
-        text-align: center;
         border-radius: 7px;
+        transition: 0.2s ease-in-out;
     }
 
-    .photo img {
-        height: 60px;
-        margin-top: -30%;
-        margin-left: 10px;
+    .location:hover{
+        transform: scale(1.05);
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
     }
 
-    .description {
-        padding: 0;
+    .location-content {
         display: flex;
+        flex: 100%;
+        text-decoration: none;
+        color: black
+    }
+
+    .photo-restaurante-action {
+        width: 90px;
+        height: 90px;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-bottom: 15px;
+        border-radius: 7px;
+        transition: 0.2s ease-in-out;
+    }
+
+    .photo-restaurante-action:hover {
+        transform: scale(1.3);
+    }
+
+    .description-restaurante {
+        padding: 0;
         flex-direction: column;
         margin-right: auto;
-        margin-left: 12px;
+        margin-left: 25px;
     }
 
-    .name {
+    .name-restaurante {
+        padding-top: 20px;
         font-weight: bold;
-        font-size: large;
+        font-size: 17px;
     }
+
+    .address-restaurante {
+        color: #383838;
+        padding-top: 10px;
+        font-size: 15px;
+        max-width: 270px;
+        text-align: left;
+    }
+
+    .phone-restaurante {
+        color:#383838;
+        padding-top: 10px;
+        font-size: 15px;
+        margin-bottom: 15px;
+    }
+
 </style>

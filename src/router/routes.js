@@ -5,7 +5,7 @@ import Administrator from "@/views/Administrator.vue";
 import NotFound from "@/views/404.vue";
 import Address from "@/components/Address.vue";
 import Confirm from "@/components/Confirm.vue";
-
+import Historico from "@/components/Historico.vue";
 
 const routes = [
     {
@@ -37,6 +37,11 @@ const routes = [
         path: "/confirm",
         name: "Confirm",
         component: Confirm,
+    },
+    {
+        path: "/historico",
+        name: "Historico",
+        component: Historico,
     },
     {
         path: "/:catchAll(.*)",

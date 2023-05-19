@@ -1,17 +1,13 @@
 <template>
-    <section class="locations-list">
-        <restaurantes />
-    </section>
+    <restaurantes />
 </template>
 
 <script>
     import Restaurantes from '../components/Restaurantes.vue';
-    import Products from '../components/Products.vue';
 
     export default {
         components: { 
-            Restaurantes,
-            Products
+            Restaurantes
         }
     }
 </script>

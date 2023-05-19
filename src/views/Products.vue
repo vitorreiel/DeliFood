@@ -1,10 +1,10 @@
 <template>
-    <div id="main-div">
+    <div class="main-div">
         <section class="items">
             <h3>Selecione os produtos</h3>
             <div v-for="product in products" class="product" @click="product.active = !product.active" :class="{ selected : product.active }">
                 <div class="photo">
-                    <img :src="product.photo">
+                    <img class="photo-products-action" :src="product.photo">
                 </div>
                 <div class="description">
                     <span class="name"> {{ product.name }} </span>
@@ -22,11 +22,11 @@
         </section>
 
         <section class="summary" v-if="total()>0">
-            <strong>Resumo do pedido</strong>
+            <h3>Resumo do pedido</h3>
             <table>
                 <thead>
                     <tr>
-                        <th>Item</th>
+                        <th class="table-products">Item</th>
                         <th>Valor</th>
                     </tr>
                 </thead>
@@ -35,13 +35,12 @@
                         <template v-if="product.active"> <!-- Se algum produto for selecionado, 
                             ele vai exibir o Resumo do pedido e fazer a conta de cada produto
                             selecionado até obter o total -->
-                            <td> {{ product.quantity + ' X ' + product.name }} </td>
+                            <td class="table-products"> {{ product.quantity + ' X ' + product.name }} </td>
                             <td> {{ `${this.monetary} ${(product.quantity * product.price).toFixed(2)}` }} </td>
                         </template>
                     </tr>
-                    
-                    <tr>
-                        <th>Total</th>
+                    <tr class="table-sumary">
+                        <th class="table-products">Total</th>
                         <th> {{ `${this.monetary} ${total()}` }} </th> <!-- Obter o total final
                             do pedido, através do Método criado pora a função Total -->
                     </tr>
@@ -87,20 +86,12 @@
         font-family: 'Open Sans', sans-serif;
     }
 
-    div {
+    #app, .main-div, .product, .items, .description, .price, .photo {
         padding-top: 20px;
-    }
-
-    #main-div,
-    div {
         display: flex;
         justify-content: center;
         align-items: flex-start;
         flex-wrap: wrap;
-    }
-
-    #main-div {
-        padding: 0;
     }
 
     .items {
@@ -111,7 +102,7 @@
         margin-right: 20px;
         max-width: 500px;
         min-width: 300px;
-        max-height: 620px;
+        max-height: 750px;
         overflow-y: scroll;
         justify-content: center;
         background-color: #fff;
@@ -128,37 +119,54 @@
     }
 
     .product {
-        border: 1px solid lightgrey;
+        border: 2px solid lightgrey;
         margin: 10px;
         flex: 100%;
         cursor: pointer;
         text-align: center;
         border-radius: 7px;
+        transition: 0.2s ease-in-out;
+    }
+
+    .product:hover {
+        transform: scale(1.05);
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
     }
 
     .product.selected {
-        border: 2px solid rgb(29, 134, 233);
+        border: 2px solid rgb(195, 9, 9);
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
     }
 
-    .photo img {
+    .photo-products-action {
         max-width: 100px;
         margin-top: -30%;
         margin-left: 10px;
+        transition: 0.2s ease-in-out;
+    }
+
+    .photo-products-action:hover {
+        transform: scale(1.3);
     }
 
     .description {
         padding: 0;
-        display: flex;
         flex-direction: column;
         margin-right: auto;
         margin-left: 12px;
     }
 
+    .name {
+        font-weight: bold;
+        font-size: 17px;
+    }
+
     .complements {
-        color: gray;
+        color: #383838	;
         padding-top: 10px;
-        font-size: 13px;
-        max-width: 215px;
+        font-size: 15px;
+        max-width: 180px;
         text-align: left;
         margin-bottom: 20px;
     }
@@ -170,7 +178,7 @@
     }
 
     .price .quantity-area {
-        margin-top: 6px;
+        margin-top: 30px;
         margin-left: -67%;
         margin-right: -35px;
         margin-bottom: 10px;
@@ -293,14 +301,23 @@
     .summary table {
         width: 100%;
         padding-top: 12px;
-        font-size: 13px;
+        font-size: 14px;
         margin: auto;
     }
 
     .summary table tbody tr:last-of-type th {
         border-top: 1px solid black;
-        padding-top: 4px;
-        padding-bottom: 30px;
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+
+    .table-sumary {
+        font-size: 16px;
+    }
+
+    .table-products {
+        text-align: left;
+        padding-right: 20px;
     }
 
     .btn {
@@ -310,7 +327,7 @@
         font-weight: 550;
         border: none !important;
         transition: all linear 160ms;
-        width: 150px;
+        width: 120px;
         height: 45px;
         border-radius: 5px;
     }

@@ -1,14 +1,14 @@
 <template>
-    <div>
+    <div class="main-div">
         <section class="formLogin">
             <h1>Login</h1>
             <img src="img/logo_inicial.png" class="icon_login" />
-            <label for="email">E-mail</label>
-            <input type="email" placeholder="Digite seu e-mail" autofocus="true" />
-            <label for="password">Senha</label>
-            <input type="password" placeholder="Digite sua senha" />
+            <label class="login-label" for="email">E-mail</label>
+            <input class="login-input" type="email" placeholder="Digite seu e-mail" autofocus="true" />
+            <label class="login-label" for="password">Senha</label>
+            <input class="login-input" type="password" placeholder="Digite sua senha" />
             <router-link to="/home">
-                <button class="btn">Acessar</button>
+                <button class="button-login">Acessar</button>
             </router-link>
         </section>
     </div>
@@ -31,7 +31,7 @@
         flex-direction: column;
         background-color: #fff;
         border-radius: 7px;
-        max-width: 460px;
+        max-width: 500px;
         padding: 40px;
         box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
         gap: 5px
@@ -41,16 +41,9 @@
         font-size: 2.3em;
     }
 
-    .formLogin p {
-        display: inline-block;
-        font-size: 14px;
-        color: #666;
-        margin-bottom: 25px;
-    }
-
-    .formLogin input {
+    .login-input {
         padding: 15px;
-        font-size: 14px;
+        font-size: 16px;
         border: 1px solid #ccc;
         margin-bottom: 20px;
         margin-top: 5px;
@@ -59,22 +52,14 @@
         outline: none;
     }
 
-
-    .formLogin input:focus {
-        border: 1px solid #e61919;
+    .login-input:focus {
+        transition: 1s;
+        border: 2px solid #e61919;
     }
 
-    .formLogin label {
-        font-size: 14px;
+    .login-label {
+        font-size: 16px;
         font-weight: 600;
-    }
-
-    .formLogin a {
-        display: inline-block;
-        margin-bottom: 20px;
-        font-size: 13px;
-        color: #555;
-        transition: all linear 160ms;
     }
 
     .icon_login {
@@ -85,20 +70,22 @@
         height: 30%;
     }
 
-    .btn {
+    .button-login {
         background-color: #e61919;
         color: #fff;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 550;
-        border: none !important;
+        border: none;
         transition: all linear 160ms;
-        margin: 0 !important;
+        margin: 0;
         width: 100%;
         height: 6vh;
         border-radius: 5px;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
-    .btn:hover {
+    .button-login:hover {
         transform: scale(1.05);
         background-color: #cc0000;
     }
