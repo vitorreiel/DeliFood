@@ -3,7 +3,7 @@
           <div class="modal-content">
               <span class="close">&times;</span>
               <h3>Pedido Realizado com <a class="delivery-success">Sucesso!</a> ✅</h3>
-              <img class="delivery-gif" src="../../public/img/delivery.gif" alt="moto">
+              <img class="delivery-gif" src="img/delivery.gif" alt="moto">
           </div>
       </div>
       <button id="myBtn" class="button-confirm">Confirmar</button>
