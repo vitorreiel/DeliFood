@@ -2,16 +2,15 @@ version: '3'
 services:
   web:
     container_name: 'delifood'
-    image: 'vitorreiel/vuejs-node:latest'
+    build: .
     ports:
-      -  '3000:3000'
+      - '3000:3000'
     networks:
       - strapi
       
   strapi:
     container_name: 'strapi'
     image: 'strapi/strapi:alpine'
-#    build: .
     restart: unless-stopped
     env_file: .env
     environment:
