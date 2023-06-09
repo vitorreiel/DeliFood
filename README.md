@@ -63,38 +63,20 @@ Uma empresa no ramo de entrega de refeições, por meio da internet.
 <br>
 
 ## Iniciando a Aplicação
+
 <br>
 
-Comando para iniciar o projeto:
+> ##### *Nota: É necessário ter o Docker instalado em sua máquina.*
+
+<br>
+
+Faça o clone do repositório atual, entre no repositório e em seguida, execute o comando abaixo para iniciar o projeto:
 ```sh
 docker compose up -d
 ```
 <br>
 
 ---
-<br>
-
-## Instalação de Dependências
-<br>
-
-1° Etapa - Comando para baixar script de instalação Docker:
-```sh
-wget https://raw.githubusercontent.com/vitorreiel/DevOps-help/main/Install/Docker-Install/install-docker.sh
-```
-<br>
-
-2° Etapa - Comando para dar permissão de execução para o script:
-```sh
-chmod +x install-docker.sh
-```
-<br>
-
-3° Etapa - Comando para executar o script:
-```sh
-./install-docker.sh
-```
-
-> ##### *Nota: Se você não estiver como usuário root no terminal, será solicitado inserir sua senha root na 3° Etapa para que as instalações possam ser feitas.*
 <br>
 
 ---
