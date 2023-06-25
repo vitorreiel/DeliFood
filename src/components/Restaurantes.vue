@@ -1,15 +1,15 @@
 <template>
     <div class="main-div">
         <section class="locations-list">
-            <h3>Selecione os produtos</h3>
+            <h3>Selecione o restaurante</h3>
             <div v-for="location in locations" class="location">
                 <router-link to="/products" class="location-content">
                     <div class="photo-restaurante">
-                        <img class="photo-restaurante-action" :src="location.photo">
+                        <img class="photo-restaurante-action" :src="'../../app/public/' + location.imagem[0].url">
                     </div>
                     <div class="description-restaurante">
-                        <span class="name-restaurante"> {{ location.name }} </span>
-                        <span class="address-restaurante"> {{ location.address }} </span>
+                        <span class="name-restaurante"> {{ location.nome }} </span>
+                        <span class="address-restaurante"> {{ location.rua }}, Nº {{ location.numero }} - {{ location.bairro }} </span>
                         <span class="phone-restaurante"> {{ location.phone }} </span>
                     </div>
                 </router-link>
@@ -19,11 +19,24 @@
 </template>
 
 <script>
-    import { locations } from "../utils/locations"
     export default {
         data() {
             return {
-                locations
+                locations: []
+            }
+        },
+        mounted() {
+            this.fetchUsers();
+        },
+        methods: {
+            fetchUsers() {
+                this.$axios.get('/restaurantes')
+                    .then(response => {
+                        this.locations = response.data;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
             }
         }
     }

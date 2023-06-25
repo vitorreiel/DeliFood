@@ -6,7 +6,7 @@
     import Restaurantes from '../components/Restaurantes.vue';
 
     export default {
-        components: { 
+        components: {
             Restaurantes
         }
     }
