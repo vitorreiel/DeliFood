@@ -1,6 +1,6 @@
 <template>
     <div class="main-div">
-        <section class="summary-confirm" v-if="total()>0">
+        <section class="summary-confirm" v-if="total > 0">
             <h3>Confirmação do pedido</h3>
             <table>
                 <thead>
@@ -11,16 +11,17 @@
                 </thead>
                 <tbody>
                     <tr v-for="product in products">
-                        <template v-if="product.active"> <!-- Se algum produto for selecionado, 
-                            ele vai exibir o Resumo do pedido e fazer a conta de cada produto
-                            selecionado até obter o total -->
-                            <td class="table-products-confirm"> {{ product.quantity + 'x ' + product.name }} </td>
-                            <td> {{ `${this.monetary} ${(product.quantity * product.price).toFixed(2)}` }} </td>
+                        <template v-if="product.quantidade > 0">
+                            <!-- Se algum produto for selecionado, 
+                                ele vai exibir o Resumo do pedido e fazer a conta de cada produto
+                                selecionado até obter o total -->
+                            <td class="table-products"> {{ product.quantidade + ' X ' + product.nome }} </td>
+                            <td> {{ `${this.monetary} ${(product.quantidade * parseFloat(product.valor.replace(",", "."))).toFixed(2)}` }} </td>
                         </template>
                     </tr>
                     <tr class="table-sumary-confirm" >
                         <th class="table-products-confirm">Total</th>
-                        <th> {{ `${this.monetary} ${total()}` }} </th> <!-- Obter o total final
+                        <th> {{ `${this.monetary} ${total}` }} </th> <!-- Obter o total final
                             do pedido, através do Método criado pora a função Total -->
                     </tr>
                 </tbody>
@@ -32,35 +33,29 @@
 
 <script>
     import { addresses } from "../utils/addresses"
-    import { products } from "../utils/products"
     import ModalConfirm from "./Modal-confirm.vue"
+
     export default {
         data() { 
             return { 
                 addresses,
-                products,
+                products: null,
+                total: 0,
                 monetary: "R$"
-
             }
         },
         components: {
             ModalConfirm,
         },
-        methods: {
-            // Método para obter o total do pedido
-            total() {
-                let total = 0
-                this.products.forEach(product => {
-                    if (product.active) {
-                        total += product.quantity * product.price
-                    }
-                })
-                return total.toFixed(2)
-            },
-           
-        }
+        mounted() {
+            const pedido = JSON.parse(localStorage.getItem("PEDIDO"));
+
+            this.products = pedido.produtos;
+            this.total = pedido.total;
+        },
     }
 </script>
+
 <style scoped>
     .summary-confirm {
         background-color: rgb(245, 245, 245);

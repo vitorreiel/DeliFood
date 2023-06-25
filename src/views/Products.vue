@@ -48,7 +48,7 @@
                 </tbody>
             </table>
             <router-link to="/address">
-                <button class="btn">Confirmar</button>
+                <button @click="confirm()" class="btn">Confirmar</button>
             </router-link>
         </section>
     </div>
@@ -98,6 +98,14 @@
             remove(product) {
                 product.quantidade = product.quantidade - 1;
                 this.calculateTotal();
+            },
+            confirm() {
+                const pedido = {
+                    produtos: this.products,
+                    total: this.total,
+                }
+
+                localStorage.setItem("PEDIDO", JSON.stringify(pedido));
             }
         }
     }
