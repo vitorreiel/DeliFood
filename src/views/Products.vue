@@ -4,24 +4,24 @@
             <h3>Selecione os produtos</h3>
             <div v-for="product in products" class="product" @click="product.active = !product.active" :class="{ selected : product.active }">
                 <div class="photo">
-                    <img class="photo-products-action" :src="product.photo">
+                    <img class="photo-products-action" :src="`../../app/public${product.imagem[0].url}`">
                 </div>
                 <div class="description">
-                    <span class="name"> {{ product.name }} </span>
-                    <span class="complements"> {{ product.complements }} </span>
+                    <span class="name"> {{ product.nome }} </span>
+                    <span class="complements"> {{ product.descricao }} </span>
                 </div>
                 <div class="price">
-                    <span> {{ `${this.monetary} ${product.price}` }} </span>
-                    <div class="quantity-area" v-if="product.active">
-                        <button class="button-1" @click.stop="product.quantity--" :disabled="product.quantity <=1">-</button>
-                        <span class="quantity"> {{ product.quantity }} </span>
-                        <button class="button-2" @click.stop="product.quantity++">+</button>
+                    <span> {{ `${this.monetary} ${product.valor}` }} </span>
+                    <div class="quantity-area">
+                        <button class="button-1" @click.stop="remove(product)" :disabled="product.quantidade <=1">-</button>
+                        <span class="quantity"> {{ product.quantidade }} </span>
+                        <button class="button-2" @click.stop="add(product)">+</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="summary" v-if="total()>0">
+        <section class="summary" v-if="total > 0">
             <h3>Resumo do pedido</h3>
             <table>
                 <thead>
@@ -32,17 +32,18 @@
                 </thead>
                 <tbody>
                     <tr v-for="product in products">
-                        <template v-if="product.active"> <!-- Se algum produto for selecionado, 
-                            ele vai exibir o Resumo do pedido e fazer a conta de cada produto
-                            selecionado até obter o total -->
-                            <td class="table-products"> {{ product.quantity + ' X ' + product.name }} </td>
-                            <td> {{ `${this.monetary} ${(product.quantity * product.price).toFixed(2)}` }} </td>
+                        <template v-if="product.quantidade > 0">
+                            <!-- Se algum produto for selecionado, 
+                                ele vai exibir o Resumo do pedido e fazer a conta de cada produto
+                                selecionado até obter o total -->
+                            <td class="table-products"> {{ product.quantidade + ' X ' + product.nome }} </td>
+                            <td> {{ `${this.monetary} ${(product.quantidade * parseFloat(product.valor.replace(",", "."))).toFixed(2)}` }} </td>
                         </template>
                     </tr>
                     <tr class="table-sumary">
                         <th class="table-products">Total</th>
-                        <th> {{ `${this.monetary} ${total()}` }} </th> <!-- Obter o total final
-                            do pedido, através do Método criado pora a função Total -->
+                        <th> {{ `${this.monetary} ${total}` }} </th>
+                        <!-- Obter o total final do pedido, através do Método criado pora a função Total -->
                     </tr>
                 </tbody>
             </table>
@@ -54,27 +55,49 @@
 </template>
 
 <script>
-    import { products } from "../utils/products"
     export default {
         data() {
             return {
                 monetary: "R$",
-                products
+                products: [],
+                total: 0
             }
         },
-        methods: { 
-            total: function() {
+        mounted() {
+            this.getProducts(this.$route.query.id);
+        },
+        methods: {
+            getProducts(id) {
+                this.$axios.get('/produtos')
+                    .then((response) => {
+                        const products = response.data.filter((product) => parseInt(product.id_restaurante) == id);
+                        this.products = products.map((product) => {
+                            return { ...product, quantidade: 0 }
+                        });
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            calculateTotal() {
                 var total = this.products.reduce((acc, item) => { 
                     // método reduce: ele executa uma função para cada elemento do array.
                     // acc (acumulador): recebe o valor inicial, e seu valor será acumulado comforme as interações com o array, armazenando o valor total.
-                    if (item.active) {
-                        acc += item.price * item.quantity;
-                    }
+                    acc += parseFloat(item.valor.replace(",", ".")) * parseFloat(item.quantidade);
                     return acc; // irá retornar o valor total acumulado pelo acc, nas operações dentro do If.
-                }, 0); // o valor inicial dessa função é 0, mas em caso de um (ou mais) produto for selecionado, a função irá executar o Método reduce.
-                return total.toFixed(2); 
-                    // toFixed: irá definir o números de casas decimais depois da virgula.
-                    // irá retornar o valor total no método total().
+                }, 0);// o valor inicial dessa função é 0, mas em caso de um (ou mais) produto for selecionado, a função irá executar o Método reduce.
+
+                this.total = total.toFixed(2); 
+                // toFixed: irá definir o números de casas decimais depois da virgula.
+                // irá retornar o valor total no método total().
+            },
+            add(product) {
+                product.quantidade = product.quantidade + 1;
+                this.calculateTotal();
+            },
+            remove(product) {
+                product.quantidade = product.quantidade - 1;
+                this.calculateTotal();
             }
         }
     }

@@ -3,14 +3,20 @@
         <section class="locations-list">
             <h3>Selecione o restaurante</h3>
             <div v-for="location in locations" class="location">
-                <router-link to="/products" class="location-content">
+                <router-link :to="`/products?id=${location.id}`" class="location-content">
                     <div class="photo-restaurante">
                         <img class="photo-restaurante-action" :src="'../../app/public/' + location.imagem[0].url">
                     </div>
                     <div class="description-restaurante">
-                        <span class="name-restaurante"> {{ location.nome }} </span>
-                        <span class="address-restaurante"> {{ location.rua }}, Nº {{ location.numero }} - {{ location.bairro }} </span>
-                        <span class="phone-restaurante"> {{ location.phone }} </span>
+                        <span class="name-restaurante">
+                            {{ location.nome }}
+                        </span>
+                        <span class="address-restaurante">
+                            {{ location.rua }}, Nº {{ location.numero }} - {{ location.bairro }}
+                        </span>
+                        <span class="phone-restaurante">
+                            {{ location.phone }}
+                        </span>
                     </div>
                 </router-link>
             </div>
