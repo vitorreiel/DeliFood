@@ -7,7 +7,12 @@
                         Cadastro
                     </router-link>
                 </li>
-                <li v-if="!isLoggedIn">
+                <li v-if="!isLoggedIn && isLoginPage">
+                    <router-link class="primary-button"  to="/home">
+                        Restaurantes
+                    </router-link>
+                </li>
+                <li v-if="!isLoggedIn && !isLoginPage">
                     <router-link class="primary-button" to="/">
                         Entrar
                     </router-link>
@@ -31,21 +36,31 @@
     export default {
         data() {
             return {
-                isLoggedIn: false // Defina essa variável como true se o usuário estiver logado
+                isLoggedIn: false, // Defina essa variável como true se o usuário estiver logado
+                isLoginPage: false
             };
         },
         mounted() {
             this.verifyUserIsLogged();
+            this.verifyLoginPage();
         },
         watch: {
             $route() {
                 this.verifyUserIsLogged();
+                this.verifyLoginPage();
             }
         },
         methods: {
             logout() {
                 localStorage.removeItem("USER");
                 this.$router.push("/");
+            },
+            verifyLoginPage() {
+                if (this.$route.path === '/') {
+                    this.isLoginPage = true;
+                } else {
+                    this.isLoginPage = false;
+                }
             },
             verifyUserIsLogged() {
                 const isLoggedIn = JSON.parse(localStorage.getItem('USER')) ? true : false;
@@ -106,7 +121,7 @@
     .secondary-button {
         color: #fff;
         font-weight: bold;
-        padding: 8px 24px;
+        padding: 8px 16px;
         font-size: 16px;
     }
 </style>
