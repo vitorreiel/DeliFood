@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "enderecos",
   "info": {
-    "name": "Endereços"
+    "name": "Endereços",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -23,8 +24,10 @@
     "complemento": {
       "type": "string"
     },
-    "id_cliente": {
-      "type": "string"
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "enderecos"
     }
   }
 }
