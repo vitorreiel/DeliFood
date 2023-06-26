@@ -2,6 +2,7 @@ import Products from "@/views/Products.vue";
 import Login from "@/views/Login.vue";
 import Home from "@/views/Home.vue";
 import Administrator from "@/views/Administrator.vue";
+import Register from "@/views/Register.vue";
 import NotFound from "@/views/404.vue";
 import Address from "@/components/Address.vue";
 import Confirm from "@/components/Confirm.vue";
@@ -12,6 +13,14 @@ const routes = [
         path: "/",
         name: "Login",
         component: Login,
+        meta: {
+            requiresAuth: false // Defina como true se essa rota exigir autenticação
+        }
+    },
+    {
+        path: "/register",
+        name: "Register",
+        component: Register,
         meta: {
             requiresAuth: false // Defina como true se essa rota exigir autenticação
         }
