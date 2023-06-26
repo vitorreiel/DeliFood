@@ -117,7 +117,7 @@
         font-family: 'Open Sans', sans-serif;
     }
 
-    #app, .main-div, .product, .items, .description, .price, .photo {
+    .main-div, .product, .items, .description, .price, .photo {
         padding-top: 20px;
         display: flex;
         justify-content: center;

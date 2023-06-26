@@ -49,7 +49,7 @@
 </script>
 
 <style>
-    #app, .description-restaurante {
+    .description-restaurante {
         display: flex;
         align-items: flex-start;
     }

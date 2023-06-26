@@ -25,7 +25,7 @@ export default {
     },
     methods: {
         verifyUserIsLogged() {
-            const isLoggedIn = JSON.parse(localStorage.getItem('USER'));
+            const isLoggedIn = JSON.parse(localStorage.getItem('USER')) ? true : false;
 
             if (isLoggedIn) {
                 this.$router.push('/home');
