@@ -2,11 +2,18 @@ import axios from 'axios';
 
 const instance = axios.create({
   baseURL: 'http://localhost:1337',
-  // headers: {
-  //   common: {
-  //     'Authorization': 'Bearer your-token'
-  //   }
-  // }
+});
+
+instance.interceptors.request.use(config => {
+  const token = JSON.parse(localStorage.getItem('USER'))?.jwt;
+
+  if (token) {
+    config.headers = {
+      Authorization: `Bearer ${token}`,
+    };
+  }
+
+  return config;
 });
 
 export default {
