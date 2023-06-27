@@ -10,32 +10,45 @@
                     <span class="complemento"> Complemento: {{ address.complemento }} </span>
                 </div>
             </div>
+
+            <div v-if="addresses.length == 0">
+                <h4>Você não tem endereços cadastrados!</h4>
+            </div>
+
             <div class="buttons-container">
                 <ModalAddress />
-                <router-link to="/confirm">
-                    <button class="button-address" @click.>Confirmar</button>
+                <button
+                    v-if="isPedido"
+                    @click="confirm()"
+                    class="button-address"
+                    :disabled="selectedAddress == null ? true : false"
+                >
+                    Confirmar
+                </button>
+                <router-link v-else to="/home">
+                    <button class="button-address">
+                        Restaurantes
+                    </button>
                 </router-link>
-            </div>
-        </section>
-        <section v-if="onSelectAddress">  
-            <div>
-                <span> {{ onSelectAddress.rua }}</span> 
-                <span> {{ onSelectAddress.bairro }}</span> 
-                <span> {{ onSelectAddress.numero }}</span>
-                <span> {{ onSelectAddress.complemento }}</span>
             </div>
         </section>
     </div>
 </template>
 
 <script>
-    import { addresses } from "../utils/addresses"
     import ModalAddress from "./Modal-address.vue";
+
     export default {
         data() {
             return { 
-                addresses
+                addresses: [],
+                selectedAddress: null,
+                isPedido: false,
             }
+        },
+        mounted() {
+            this.getAddresses();
+            this.verifyIfIsPedido();
         },
         components: {
             ModalAddress
@@ -45,9 +58,33 @@
                 this.addresses.forEach( a => {
                     a.active = false;
                 });
+
                 address.active = true;
-                
                 this.selectedAddress = address;
+            },
+            verifyIfIsPedido() {
+                const pedido = JSON.parse(localStorage.getItem("PEDIDO"));
+
+                if (pedido) {
+                    this.isPedido = true;
+                }
+            },
+            getAddresses() {
+                const userData = JSON.parse(localStorage.getItem("USER"));
+
+                if (userData != null) {
+                    this.addresses = userData.user.enderecos;
+                }
+            },
+            confirm() {
+                const pedido = JSON.parse(localStorage.getItem("PEDIDO"));
+
+                localStorage.setItem("PEDIDO", JSON.stringify({
+                    ...pedido,
+                    endereco: this.selectedAddress
+                }));
+
+                this.$router.push("/confirm");
             }
         }
     }

@@ -20,6 +20,10 @@
                     </div>
                 </router-link>
             </div>
+
+            <div v-if="locations.length == 0">
+                <h5>Não há restaurantes registrados</h5>
+            </div>
         </section>
     </div>
 </template>

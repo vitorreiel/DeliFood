@@ -19,6 +19,10 @@
                     </div>
                 </div>
             </div>
+
+            <div v-if="products.length == 0">
+                <h5>Não há produtos registrados para esse restaurante!</h5>
+            </div>
         </section>
 
         <section class="summary" v-if="total > 0">
@@ -47,9 +51,8 @@
                     </tr>
                 </tbody>
             </table>
-            <router-link to="/address">
-                <button @click="confirm()" class="btn">Confirmar</button>
-            </router-link>
+            
+            <button @click="confirm()" class="btn">Confirmar</button>
         </section>
     </div>
 </template>
@@ -100,12 +103,17 @@
                 this.calculateTotal();
             },
             confirm() {
+                const userData = JSON.parse(localStorage.getItem("USER"));
+
                 const pedido = {
                     produtos: this.products,
                     total: this.total,
+                    user: userData.user,
                 }
 
                 localStorage.setItem("PEDIDO", JSON.stringify(pedido));
+
+                this.$router.push("/address");
             }
         }
     }
@@ -131,6 +139,7 @@
         border-radius: 7px;
         padding: 20px;
         margin-right: 20px;
+        margin-bottom: 20px;
         max-width: 500px;
         min-width: 300px;
         max-height: 750px;
