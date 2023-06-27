@@ -24,6 +24,7 @@ export default {
         min-width: 300px;
         max-height: 620px;
         justify-content: center;
+        align-items: center;
         gap: 10px;
         background-color: #fff;
         box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);

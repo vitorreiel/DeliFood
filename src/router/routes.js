@@ -14,7 +14,8 @@ const routes = [
         name: "Login",
         component: Login,
         meta: {
-            requiresAuth: false // Defina como true se essa rota exigir autenticação
+            requiresAuth: false, // Defina como true se essa rota exigir autenticação
+            admin: false,
         }
     },
     {
@@ -22,7 +23,8 @@ const routes = [
         name: "Register",
         component: Register,
         meta: {
-            requiresAuth: false // Defina como true se essa rota exigir autenticação
+            requiresAuth: false, // Defina como true se essa rota exigir autenticação
+            admin: false,
         }
     },
     {
@@ -30,7 +32,8 @@ const routes = [
         name: "Home",
         component: Home,
         meta: {
-            requiresAuth: false // Defina como true se essa rota exigir autenticação
+            requiresAuth: false, // Defina como true se essa rota exigir autenticação
+            admin: false,
         }
     },
     {
@@ -38,7 +41,8 @@ const routes = [
         name: "Administrator",
         component: Administrator,
         meta: {
-            requiresAuth: true // Essa rota requer autenticação
+            requiresAuth: true, // Essa rota requer autenticação
+            admin: true,
         }
     },
     {
@@ -46,7 +50,8 @@ const routes = [
         name: "Products",
         component: Products,
         meta: {
-            requiresAuth: true // Essa rota requer autenticação
+            requiresAuth: true, // Essa rota requer autenticação
+            admin: false,
         }
     },
     {
@@ -54,7 +59,8 @@ const routes = [
         name: "Address",
         component: Address,
         meta: {
-            requiresAuth: true // Essa rota requer autenticação
+            requiresAuth: true, // Essa rota requer autenticação
+            admin: false,
         }
     },
     {
@@ -62,7 +68,8 @@ const routes = [
         name: "Confirm",
         component: Confirm,
         meta: {
-            requiresAuth: true // Essa rota requer autenticação
+            requiresAuth: true, // Essa rota requer autenticação
+            admin: false,
         }
     },
     {
@@ -70,7 +77,8 @@ const routes = [
         name: "Historico",
         component: Historico,
         meta: {
-            requiresAuth: true // Essa rota requer autenticação
+            requiresAuth: true, // Essa rota requer autenticação
+            admin: false,
         }
     },
     {
@@ -78,7 +86,8 @@ const routes = [
         name: "NotFound",
         component: NotFound,
         meta: {
-            requiresAuth: false // Defina como true se essa rota exigir autenticação
+            requiresAuth: false, // Defina como true se essa rota exigir autenticação
+            admin: false,
         }
     }
 ];

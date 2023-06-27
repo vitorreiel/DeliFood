@@ -17,7 +17,7 @@
                         Entrar
                     </router-link>
                 </li>
-                <li v-if="isLoggedIn">
+                <li v-if="isLoggedIn && !isAdmin">
                     <router-link class="secondary-button" to="/address">
                         Endereços
                     </router-link>
@@ -37,17 +37,20 @@
         data() {
             return {
                 isLoggedIn: false, // Defina essa variável como true se o usuário estiver logado
-                isLoginPage: false
+                isLoginPage: false,
+                isAdmin: false,
             };
         },
         mounted() {
             this.verifyUserIsLogged();
             this.verifyLoginPage();
+            this.verifyIsAdmin();
         },
         watch: {
             $route() {
                 this.verifyUserIsLogged();
                 this.verifyLoginPage();
+                this.verifyIsAdmin();
             }
         },
         methods: {
@@ -60,6 +63,14 @@
                     this.isLoginPage = true;
                 } else {
                     this.isLoginPage = false;
+                }
+            },
+            verifyIsAdmin() {
+                if (this.$route.meta.admin) {
+                    this.isAdmin = true;
+                    console.log("aaaa", this.$route.meta.admin);
+                } else {
+                    this.isAdmin = false;
                 }
             },
             verifyUserIsLogged() {
@@ -77,8 +88,9 @@
   
 <style>
     header {
+        width: 50%;
         background-color: transparent;
-        padding: 10px 25%;
+        padding: 10px 0;
         display: flex;
         flex-direction: row-reverse;
     }
