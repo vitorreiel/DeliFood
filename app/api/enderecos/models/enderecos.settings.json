@@ -24,10 +24,11 @@
     "complemento": {
       "type": "string"
     },
-    "users_permissions_user": {
+    "user_id": {
+      "via": "enderecos",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "enderecos"
+      "columnName": "user_id",
+      "model": "user"
     }
   }
 }

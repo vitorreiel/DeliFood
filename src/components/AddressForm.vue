@@ -1,5 +1,5 @@
 <template>
-    <form class="form-address">
+    <form class="form-address" @submit="submit">
         <div class="form-group">
             <div class="form-input">
                 <label for="street">Rua: </label>
@@ -33,6 +33,7 @@
         </div>
     </form>
 </template>
+
 <script>
     export default {
         data() {
@@ -70,6 +71,25 @@
             validateComplement() {
                 this.complementValid = /^[a-zA-Z\s]+$/.test(this.complement)
             },
+            submit(e) {
+                e.preventDefault();
+
+                const userData = JSON.parse(localStorage.getItem("USER"));
+
+                this.$axios.post('/enderecos', {
+                    rua: this.street,
+                    numero: this.number,
+                    bairro: this.district,
+                    complemento: this.complement,
+                    user_id: userData.user.id,
+                })
+                .then(() => {
+                    this.$router.go();
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+            }
         },
         watch: {
             street() {
@@ -91,13 +111,14 @@
 <style>
     .form-address {
         margin-top: 20px;
+        width: 80%;
     }
 
     .form-address-input{
-        margin: 20px;
+        margin: 5px 0;
         padding: 8px;
-        border-radius: 7px;
-        border:  2px solid lightgrey;
+        border-radius: 4px;
+        border: 1px solid lightgrey;
         width: 100%;
     }
 
@@ -107,9 +128,9 @@
     }
 
     .form-input {
+        margin-top: 12px;
         display: flex;
-        flex-direction: row;
-        align-items: center;
+        flex-direction: column;
         width: 100%;
     }
 
@@ -164,5 +185,9 @@
         box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
         color: rgba(0, 0, 0, 0.65);
         transform: translateY(0);
+    }
+
+    .error {
+        color: #e61919;
     }
 </style>

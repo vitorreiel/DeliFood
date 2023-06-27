@@ -72,9 +72,24 @@
             getAddresses() {
                 const userData = JSON.parse(localStorage.getItem("USER"));
 
-                if (userData != null) {
-                    this.addresses = userData.user.enderecos;
-                }
+                this.$axios.get("/enderecos")
+                .then((response) => {
+                    const enderecos = response.data.filter(
+                        (endereco) => {
+                            if (endereco.user_id) {
+                                if (parseInt(endereco.user_id.id) == parseInt(userData.user.id))
+                                    return true;
+                            }
+
+                            return false;
+                        }
+                    );
+
+                    this.addresses = enderecos;
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
             },
             confirm() {
                 const pedido = JSON.parse(localStorage.getItem("PEDIDO"));

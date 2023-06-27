@@ -60,7 +60,8 @@
       "configurable": false
     },
     "enderecos": {
-      "via": "users_permissions_user",
+      "targetColumnName": "user_id",
+      "via": "user_id",
       "collection": "enderecos"
     }
   }

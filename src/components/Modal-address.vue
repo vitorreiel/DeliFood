@@ -5,11 +5,15 @@
             <span class="close">&times;</span>
         </div>
     </div>
-    <button id="add-address" class="button-add-address">+ Adicionar</button>
+
+    <button id="add-address" class="button-add-address">
+        + Adicionar
+    </button>
 </template>
+
 <script>
-    import router from '../router/index';
     import AddressForm from './AddressForm.vue';
+
     export default {
         components: {
             AddressForm
@@ -35,6 +39,7 @@
         },
     }
 </script>
+
 <style>
     /* Estilo do modal */
     .modal {
