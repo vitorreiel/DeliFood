@@ -90,7 +90,10 @@
 				.catch((error) => {
 					console.error(error);
 				})
-				.finally(() => (this.loading = false));
+				.finally(() => {
+					this.loading = false;
+					this.$router.go();
+				});
 		},
 		handleAddAction() {
 			console.log("AAAA");

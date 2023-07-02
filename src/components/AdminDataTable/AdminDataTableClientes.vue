@@ -89,7 +89,10 @@ export default {
 				.catch((error) => {
 					console.error(error);
 				})
-				.finally(() => (this.loading = false));
+				.finally(() => {
+					this.loading = false;
+					this.$router.go();
+				});
 		},
 	},
 	mounted() {
