@@ -5,6 +5,7 @@
 <script>
     import Restaurantes from '../components/Restaurantes.vue';
 
+
     export default {
         components: {
             Restaurantes

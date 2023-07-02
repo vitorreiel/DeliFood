@@ -8,6 +8,9 @@
                     <span class="bairro"> Bairro: {{ address.bairro }} </span>
                     <span class="numero"> Número: {{ address.numero }} </span>
                     <span class="complemento"> Complemento: {{ address.complemento }} </span>
+                    <button class="button-address" style="margin-left: 73%;" @click="this.delete(address.id)">
+                        <i class='bx bx-trash'></i>
+                    </button>
                 </div>
             </div>
 
@@ -100,6 +103,15 @@
                 }));
 
                 this.$router.push("/confirm");
+            },
+            delete(id) {
+                this.$axios.delete(`/enderecos/${id}`)
+                    .then(() => {
+                        this.addresses = this.addresses.filter(address => address.id !== id);
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
             }
         }
     }
@@ -119,7 +131,7 @@
         margin-right: 20px;
         max-width: 500px;
         min-width: 300px;
-        max-height: 750px;
+        max-height: 600px;
         overflow-y: scroll;
         justify-content: center;
         background-color: #fff;

@@ -33,13 +33,11 @@
 </template>
 
 <script>
-    import { addresses } from "../utils/addresses"
     import ModalConfirm from "./Modal-confirm.vue"
 
     export default {
         data() { 
             return { 
-                addresses,
                 products: null,
                 total: 0,
                 monetary: "R$"
@@ -63,6 +61,7 @@
         padding: 20px;
         min-height: 300px;
         min-width: 400px;
+        max-height: 600px;
         text-align: center;
         box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
         border-radius: 7px;

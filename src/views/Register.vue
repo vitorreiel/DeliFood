@@ -1,15 +1,15 @@
 <template>
     <div class="main-div">
         <section class="formCadastro">
-        <h1>Cadastro</h1>
-        <img src="img/logo_inicial.png" class="icon_login" />
-        <label class="login-label" for="text">Nome</label>
-        <input class="login-input" type="text" placeholder="Digite seu nome" v-model="username" autofocus />
-        <label class="login-label" for="email">E-mail</label>
-        <input class="login-input" type="email" placeholder="Digite seu e-mail" v-model="email" />
-        <label class="login-label" for="password">Senha</label>
-        <input class="login-input" type="password" placeholder="Digite sua senha" v-model="password" />
-        <button class="button-login" @click="login">Cadastrar</button>
+            <h1>Cadastro</h1>
+            <img src="img/logo_inicial.png" class="icon_login" />
+            <label class="login-label" for="text">Nome</label>
+            <input class="login-input" type="text" placeholder="Digite seu nome" v-model="username" autofocus />
+            <label class="login-label" for="email">E-mail</label>
+            <input class="login-input" type="email" placeholder="Digite seu e-mail" v-model="email" />
+            <label class="login-label" for="password">Senha</label>
+            <input class="login-input" type="password" placeholder="Digite sua senha" v-model="password" />
+            <button class="button-login" @click="login">Cadastrar</button>
         </section>
     </div>
 </template>
@@ -64,7 +64,7 @@ export default {
         flex-direction: column;
         background-color: #fff;
         border-radius: 7px;
-        max-width: 500px;
+        max-width: 450px;
         padding: 40px;
         box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
         gap: 5px

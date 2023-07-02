@@ -7,7 +7,7 @@
             </button>
         </div>
         <div class="navbar-content">
-            <a href="#" class="navbar-content__item" role="button">
+            <a href="?type=clientes" class="navbar-content__item" role="button">
                 <div class="navbar-content__item-icon">
                     <i class='bx bx-user navbar-icon'></i>
                 </div>
@@ -15,7 +15,7 @@
                     <span>Clientes</span>
                 </div>
             </a>
-            <a href="#" class="navbar-content__item" role="button">
+            <a href="?type=restaurantes" class="navbar-content__item" role="button">
                 <div class="navbar-content__item-icon">
                     <i class='bx bx-cart-alt navbar-icon'></i>
                 </div>
@@ -23,7 +23,7 @@
                     <span>Restaurantes</span>
                 </div>
             </a>
-            <a href="#" class="navbar-content__item" role="button">
+            <a href="?type=pedidos" class="navbar-content__item" role="button">
                 <div class="navbar-content__item-icon">
                     <i class='bx bx-pie-chart-alt-2 navbar-icon'></i>
                 </div>
@@ -31,12 +31,6 @@
                     <span>Pedidos</span>
                 </div>
             </a>
-        </div>
-        <div class="navbar-footer">
-            <button class="navbar-button navbar-button--active">
-                <i class='bx bx-log-out navbar-icon' id="log_out"></i>
-                <span>Logout</span>
-            </button>
         </div>
     </nav>
 </template>
@@ -61,13 +55,14 @@ export default {
         background: #990808;
         display: flex;
         flex-direction: column;
-        min-height: 100%;
+        min-height: 600px;
         padding: 10px;
-
-        /* Workaround to navbar fit in parent container */
-        margin: -20px;
+        position: absolute;
+        left: 0;
+        top: 0;
         border-top-left-radius: 6px;
         border-bottom-left-radius: 6px;
+        z-index: 999;
     }
 
     .navbar-container div {
@@ -136,6 +131,6 @@ export default {
     }
 
     .navbar-footer {
-        margin-top: 40px;
+        margin-top: 350px;
     }
 </style>

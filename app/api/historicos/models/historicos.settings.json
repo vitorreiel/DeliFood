@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "historicos",
   "info": {
-    "name": "Historicos"
+    "name": "Historicos",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -11,20 +12,21 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "nome": {
-      "type": "string"
-    },
-    "produtos": {
-      "type": "string"
-    },
     "endereco": {
       "type": "string"
     },
     "data_hora": {
       "type": "string"
     },
-    "id_cliente": {
-      "type": "string"
+    "total": {
+      "type": "decimal"
+    },
+    "user_id": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "restaurante": {
+      "model": "restaurantes"
     }
   }
 }

@@ -7,25 +7,62 @@
           </div>
       </div>
 
-      <button id="myBtn" class="button-confirm">Confirmar</button>
+      <button id="myBtn" @click="sendButton" class="button-confirm">Confirmar</button>
 </template>
 
 <script>
 import router from '../router/index';
 export default {
+    data() {
+        return {
+            loading: true
+        };
+    },
+    methods: {
+        async sendButton() {
+            const pedidoData = JSON.parse(localStorage.getItem("PEDIDO"));
+
+            const body = {
+                "endereco": `${pedidoData.endereco.rua} ${pedidoData.endereco.numero}, ${pedidoData.endereco.complemento}, ${pedidoData.endereco.bairro}`,
+                "user_id": pedidoData.user.id,
+                "total": parseFloat(pedidoData.total),
+                "restaurante": pedidoData.produtos[0].id_restaurante,
+                "data_hora": new Date()
+            };
+
+            this.$axios.post("/historicos", body)
+                .then(async (response) => {
+                    const pedidos = pedidoData.produtos.map((produto) => (
+                        {
+                            produto: produto.id,
+                            subtotal: parseFloat(produto.valor.replace(',', '.')) * produto.quantidade,
+                            quantidade: produto.quantidade,
+                            historico: response.data.id
+                        }
+                    ));
+
+                    for (const value of pedidos) {
+                        try {
+                            await this.$axios.post("/pedidos", value);
+                        } catch (e) {
+                            console.log(e);
+                        }
+                    }
+
+                    localStorage.removeItem("PEDIDO");
+                    router.push("/historico");
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+    },
     mounted() {
         // Encontra o modal
-        var modal = document.getElementById("myModal");
-        
-        // Encontra o botão para abrir o modal
-        var btn = document.getElementById("myBtn");
-        btn.addEventListener('click', function() {
-            localStorage.removeItem("PEDIDO");
-            modal.style.display = "block";
-        });
+        let modal = document.getElementById("myModal");
 
         // Encontra o botão para fechar o modal
-        var span = document.getElementsByClassName("close")[0];
+        let span = document.getElementsByClassName("close")[0];
         span.addEventListener('click', function() {
             modal.style.display = "none";
             router.push("/historico");

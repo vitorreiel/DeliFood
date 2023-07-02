@@ -52,7 +52,7 @@
                 </tbody>
             </table>
             
-            <button @click="confirm()" class="btn">Confirmar</button>
+            <button @click="confirm" class="btn">Confirmar</button>
         </section>
     </div>
 </template>
@@ -83,7 +83,7 @@
                     });
             },
             calculateTotal() {
-                var total = this.products.reduce((acc, item) => { 
+                let total = this.products.reduce((acc, item) => { 
                     // método reduce: ele executa uma função para cada elemento do array.
                     // acc (acumulador): recebe o valor inicial, e seu valor será acumulado comforme as interações com o array, armazenando o valor total.
                     acc += parseFloat(item.valor.replace(",", ".")) * parseFloat(item.quantidade);
@@ -106,10 +106,10 @@
                 const userData = JSON.parse(localStorage.getItem("USER"));
 
                 const pedido = {
-                    produtos: this.products,
+                    produtos: this.products.filter(product => product.quantidade > 0),
                     total: this.total,
                     user: userData.user,
-                }
+                };
 
                 localStorage.setItem("PEDIDO", JSON.stringify(pedido));
 
@@ -139,10 +139,9 @@
         border-radius: 7px;
         padding: 20px;
         margin-right: 20px;
-        margin-bottom: 20px;
         max-width: 500px;
         min-width: 300px;
-        max-height: 750px;
+        max-height: 600px;
         overflow-y: scroll;
         justify-content: center;
         background-color: #fff;

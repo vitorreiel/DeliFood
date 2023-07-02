@@ -20,14 +20,14 @@
         },
         mounted() {
             // Encontra o modal
-            var modal = document.getElementById("myModal");
+            let modal = document.getElementById("myModal");
             // Encontra o botão para abrir o modal
-            var btn = document.getElementById("add-address");
+            let btn = document.getElementById("add-address");
             btn.addEventListener("click", function () {
                 modal.style.display = "block";
             });
             // Encontra o botão para fechar o modal
-            var span = document.getElementsByClassName("close")[0];
+            let span = document.getElementsByClassName("close")[0];
             span.addEventListener("click", function () {
                 modal.style.display = "none";
             });

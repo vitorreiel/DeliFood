@@ -1,13 +1,13 @@
 <template>
     <div class="main-div">
         <section class="formLogin">
-        <h1>Login</h1>
-        <img src="img/logo_inicial.png" class="icon_login" />
-        <label class="login-label" for="email">E-mail</label>
-        <input class="login-input" type="email" placeholder="Digite seu e-mail" v-model="email" autofocus />
-        <label class="login-label" for="password">Senha</label>
-        <input class="login-input" type="password" placeholder="Digite sua senha" v-model="password" />
-        <button class="button-login" @click="login">Acessar</button>
+            <h1>Login</h1>
+            <img src="img/logo_inicial.png" class="icon_login" />
+            <label class="login-label" for="email">E-mail</label>
+            <input class="login-input" type="email" placeholder="Digite seu e-mail" v-model="email" autofocus />
+            <label class="login-label" for="password">Senha</label>
+            <input class="login-input" type="password" placeholder="Digite sua senha" v-model="password" />
+            <button class="button-login" @click="login">Acessar</button>
         </section>
     </div>
 </template>
@@ -60,7 +60,7 @@ export default {
         flex-direction: column;
         background-color: #fff;
         border-radius: 7px;
-        max-width: 500px;
+        max-width: 450px;
         padding: 40px;
         box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
         gap: 5px

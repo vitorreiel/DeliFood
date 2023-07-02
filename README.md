@@ -33,7 +33,8 @@ Uma empresa no ramo de entrega de refeições, por meio da internet.
     - Restaurantes
     - Produtos
     - Endereços
-    - Histórico 
+    - Pedidos
+    - Históricos
 <br>
 
 ---
@@ -42,9 +43,9 @@ Uma empresa no ramo de entrega de refeições, por meio da internet.
 ## Principais funcionalidades da Aplicação
 <br>
 
-    - O cliente não registrado, pode conferir o cardápio fornecidos pelos restaurantes cadastrados.
-    - O cliente registrado, poderá selecionar qualquer restaurante desejado, efetuar a escolha do seu pedido, selecionar um endereço já cadastrado ou cadastrar um novo endereço de entrega, receber a confirmação de pedido realizado e ter acesso a um histórico de pedidos já realizados anteriormente.
-    - O administrador terá total controle sobre os clientes, restaurantes e pedidos realizados, podendo então adicionar, remover e editá-los se assim desejar.
+    - O cliente não registrado, pode conferir os restaurantes cadastrados.
+    - O cliente registrado poderá selecionar qualquer restaurante desejado, efetuar a escolha do seu pedido, selecionar seu endereço já cadastrado, cadastrar um novo endereço de entrega ou deletar o endereço. Com o pedido realizado o usuário terá acesso a um histórico de pedidos, com todos os seus pedidos já realizados.
+    - O administrador terá controle sobre os clientes, restaurantes e pedidos realizados, podendo remover e editá-los se assim desejar.
 <br>
 
 ---

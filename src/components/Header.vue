@@ -18,8 +18,18 @@
                     </router-link>
                 </li>
                 <li v-if="isLoggedIn && !isAdmin">
+                    <router-link class="secondary-button" to="/">
+                        Restaurantes
+                    </router-link>
+                </li>
+                <li v-if="isLoggedIn && !isAdmin">
                     <router-link class="secondary-button" to="/address">
                         Endereços
+                    </router-link>
+                </li>
+                <li v-if="isLoggedIn && !isAdmin">
+                    <router-link class="secondary-button" to="/historico">
+                        Histórico
                     </router-link>
                 </li>
                 <li v-if="isLoggedIn">

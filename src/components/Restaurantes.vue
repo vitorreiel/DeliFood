@@ -29,6 +29,7 @@
 </template>
 
 <script>
+
     export default {
         data() {
             return {
@@ -56,6 +57,10 @@
     .description-restaurante {
         display: flex;
         align-items: flex-start;
+        padding: 0;
+        flex-direction: column;
+        margin-right: auto;
+        margin-left: 25px;
     }
 
     .locations-list {
@@ -66,7 +71,7 @@
         margin-right: 20px;
         max-width: 500px;
         min-width: 300px;
-        max-height: 750px;
+        max-height: 600px;
         overflow-y: scroll;
         justify-content: center;
         background-color: #fff;
@@ -116,13 +121,6 @@
 
     .photo-restaurante-action:hover {
         transform: scale(1.3);
-    }
-
-    .description-restaurante {
-        padding: 0;
-        flex-direction: column;
-        margin-right: auto;
-        margin-left: 25px;
     }
 
     .name-restaurante {
