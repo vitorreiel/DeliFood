@@ -2,6 +2,8 @@ import Products from "@/views/Products.vue";
 import Login from "@/views/Login.vue";
 import Home from "@/views/Home.vue";
 import Administrator from "@/views/Administrator.vue";
+import ManageClient from "@/components/Admin/Manage-cliente.vue";
+import ManageRestaurant from "@/components/Admin/Manage-restaurante.vue";
 import Register from "@/views/Register.vue";
 import NotFound from "@/views/404.vue";
 import Address from "@/components/Address.vue";
@@ -40,6 +42,24 @@ const routes = [
         path: "/administrator",
         name: "Administrator",
         component: Administrator,
+        meta: {
+            requiresAuth: true, // Essa rota requer autenticação
+            admin: true,
+        }
+    },
+    {
+        path: "/administrator/client",
+        name: "ManageClient",
+        component: ManageClient,
+        meta: {
+            requiresAuth: true, // Essa rota requer autenticação
+            admin: true,
+        }
+    },
+    {
+        path: "/administrator/restaurant",
+        name: "ManageRestaurant",
+        component: ManageRestaurant,
         meta: {
             requiresAuth: true, // Essa rota requer autenticação
             admin: true,

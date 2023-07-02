@@ -1,4 +1,13 @@
 <template>
+	<div class="add-btn-wrapper">
+		<router-link to="/administrator/restaurant">
+			<button class="add-btn">
+				<i class='bx bx-plus-circle'></i>
+				Adicionar restaurante
+			</button>
+		</router-link>
+	</div>
+
 	<div v-if="!this.loading">
 		<VueTable
 			:rows="tableData"
@@ -10,9 +19,11 @@
 		>
 			<template #table-row="props">
 				<span v-if="props.column.field == 'actions'">
-					<button class="table-icon-btn edit" @click="handleEditAction(props.row.id)">
-						<i class='bx bx-edit'></i>
-					</button>
+					<router-link :to="`/administrator/restaurant?id=${props.row.id}`">
+						<button class="table-icon-btn edit">
+							<i class='bx bx-edit'></i>
+						</button>
+					</router-link>
 					<button class="table-icon-btn delete" @click="handleDeleteAction(props.row.id)">
 						<i class='bx bx-trash'></i>
 					</button>
@@ -71,7 +82,17 @@
 			console.log(id);
 		},
 		handleDeleteAction(id) {
-			console.log(id);
+			this.loading = true;
+
+			this.$axios
+				.delete(`/restaurantes/${id}`)
+				.catch((error) => {
+					console.error(error);
+				})
+				.finally(() => (this.loading = false));
+		},
+		handleAddAction() {
+			console.log("AAAA");
 		}
 	},
 	mounted() {
@@ -94,6 +115,30 @@
 
 	.table-icon-btn.edit {
 		color: rgb(0, 0, 150);
+	}
+
+	.add-btn-wrapper {
+		width: 100%;
+		padding: 12px 0;
+		display: flex;
+		justify-content: end;
+	}
+
+	.add-btn-wrapper .add-btn {
+		background-color: rgb(0, 140, 0);
+		border-radius: 4px;
+		font-weight: bold;
+		color: white;
+		border: none;
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		padding: 12px 24px;
+		transition: all ease-in-out 350ms;
+	}
+
+	.add-btn-wrapper .add-btn:hover {
+		background-color: rgb(0, 160, 0);
 	}
 </style>
   

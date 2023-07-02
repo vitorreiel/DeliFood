@@ -44,6 +44,7 @@ export default {
     .home-admin {
         color: black;
         display: flex;
+        flex-direction: column;
         flex-wrap: wrap;
         border-radius: 7px;
         padding: 20px;
@@ -51,7 +52,7 @@ export default {
         max-width: 800px;
         min-height: 600px;
         max-height: 600px;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         gap: 10px;
         background-color: #fff;
