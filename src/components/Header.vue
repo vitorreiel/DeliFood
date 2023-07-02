@@ -78,7 +78,6 @@
             verifyIsAdmin() {
                 if (this.$route.meta.admin) {
                     this.isAdmin = true;
-                    console.log("aaaa", this.$route.meta.admin);
                 } else {
                     this.isAdmin = false;
                 }

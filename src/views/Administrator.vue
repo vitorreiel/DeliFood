@@ -1,26 +1,26 @@
 <template>
     <section class="home-admin">
-        <navbar />
+        <Navbar />
         <div class="home-admin-content">
             <div v-if="['clientes', 'restaurantes', 'pedidos'].includes(type)">
                 <admin-data :type="this.type" />
             </div>
             <div v-else-if="type == ''">
                 <div class="select-option-admin">
-                    <p style="text-align: center;">Selecione alguma opção ao lado.</p>
+                    <p style="text-align: center;">Selecione alguma opção ao lado</p>
                     <img src="img/logo_inicial.png" class="icon_admin">
                 </div>
             </div>
             <div v-else>
-                <p>Não existe essa categoria no menu, por favor, selecione outra.</p>
+                <div class="select-option-admin">
+                    <p>Não existe essa categoria no menu, por favor, selecione outra</p>
+                </div>
             </div>
         </div>
     </section>
 </template>
 
 <script>
-import { useRouter } from 'vue-router';
-
 import Navbar from '../components/Navbar.vue';
 import AdminData from '../components/AdminData.vue';
 
@@ -30,13 +30,12 @@ export default {
             type: '',
         };
     },
-    components: { Navbar, AdminData },
+    components: {
+        Navbar,
+        AdminData
+    },
     mounted() {
-        const router = useRouter();
-
-        const typeValue = router.currentRoute.value.query?.type || "";
-
-        this.type = typeValue;
+        this.type = this.$router.currentRoute.value.query?.type || "";
     }
 }
 </script>

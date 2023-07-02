@@ -27,14 +27,14 @@
 		tableData: [],
 		loading: true,
 		columns: [
-		  { field: 'id', label: 'ID', sortable: true },
-		  { field: 'username', label: 'Username', sortable: true },
-		  { field: 'email', label: 'Email', sortable: true },
-			{ field: 'actions', label: 'Ações' }
+			{ field: 'id', label: 'ID', sortable: true },
+			{ field: 'username', label: 'Username', sortable: true },
+			{ field: 'email', label: 'Email', sortable: true },
+			{ field: 'actions', label: 'Ações', sortable: false }
 		],
 		sortOptions: {
-		  enabled: true,
-		  initialSortBy: { key: 'id', type: 'asc' },
+			enabled: true,
+			initialSortBy: { key: 'id', type: 'asc' },
 		},
 	  };
 	},

@@ -44,8 +44,8 @@ export default {
                     for (const value of pedidos) {
                         try {
                             await this.$axios.post("/pedidos", value);
-                        } catch (e) {
-                            console.log(e);
+                        } catch (error) {
+                            console.error(error);
                         }
                     }
 

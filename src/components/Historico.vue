@@ -56,8 +56,8 @@
                                         ...pedidos.data
                                     }
                                 };
-                            } catch (e) {
-                                console.log(e);
+                            } catch (error) {
+                                console.error(error);
                             } finally {
                                 iterator++;
                             }
@@ -65,7 +65,7 @@
 
                         this.historics = data;
                     }).catch((error) => {
-                        console.log(error)
+                        console.error(error)
                     })
             }
         },

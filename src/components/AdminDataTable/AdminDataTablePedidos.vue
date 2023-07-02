@@ -30,7 +30,14 @@
 		  { field: 'id', label: 'ID', sortable: true },
 		  { field: 'restaurante.nome', label: 'Restaurante', sortable: true },
 		  { field: 'user_id.username', label: 'Usuário', sortable: true },
-		  { field: 'data_hora', label: 'Data', sortable: true },
+		  { 
+			field: 'data_hora',
+			label: 'Data',
+			sortable: true,
+			type: 'date',
+			dateInputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+			dateOutputFormat: 'dd/MM/yyyy',
+		  },
 		  { field: 'total', label: 'Valor', sortable: true },
 		],
 		sortOptions: {
@@ -53,7 +60,7 @@
 
 				this.tableData =  data;
 			}).catch((error) => {
-					console.log(error)
+				console.error(error);
 			}).finally(() => this.loading = false);
 	  },
 	},

@@ -19,7 +19,11 @@ import AdminDataTablePedidos from './AdminDataTable/AdminDataTablePedidos.vue';
 
 export default {
   props: ['type'],
-  components: { AdminDataTableClientes, AdminDataTableRestaurantes, AdminDataTablePedidos }
+  components: {
+    AdminDataTableClientes,
+    AdminDataTableRestaurantes,
+    AdminDataTablePedidos
+  }
 }
 </script>
 
