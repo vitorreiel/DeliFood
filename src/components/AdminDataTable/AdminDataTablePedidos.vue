@@ -28,8 +28,8 @@
 		loading: true,
 		columns: [
 		  { field: 'id', label: 'ID', sortable: true },
-		  { field: 'restaurante.nome', label: 'Restaurante', sortable: true },
-		  { field: 'user_id.username', label: 'Usuário', sortable: true },
+		  { field: 'restaurante.nome', label: 'Restaurante', sortable: false },
+		  { field: 'user_id.username', label: 'Usuário', sortable: false },
 		  { 
 			field: 'data_hora',
 			label: 'Data',

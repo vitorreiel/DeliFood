@@ -6,9 +6,22 @@
 			:sort-options="sortOptions"
 			theme="polar-bear"
 			styleClass="vgt-table"
-			:search-options="{
-					enabled: true,
-		}"/>
+			:search-options="{ enabled: true }"
+		>
+			<template #table-row="props">
+				<span v-if="props.column.field == 'actions'">
+					<button class="table-icon-btn edit" @click="handleEditAction(props.row.id)">
+						<i class='bx bx-edit'></i>
+					</button>
+					<button class="table-icon-btn delete" @click="handleDeleteAction(props.row.id)">
+						<i class='bx bx-trash'></i>
+					</button>
+				</span>
+				<span v-else>
+					{{props.formattedRow[props.column.field]}}
+				</span>
+			</template>
+		</VueTable>
 	</div>
 	<div v-else>
 		<p>Carregando...</p>
@@ -26,9 +39,9 @@
 		tableData: [],
 		loading: true,
 		columns: [
-		  { field: 'id', label: 'ID', sortable: true },
-		  { field: 'nome', label: 'Nome', sortable: true },
-			{ field: 'actions', label: 'Ações' }
+			{ field: 'id', label: 'ID', sortable: true },
+			{ field: 'nome', label: 'Nome', sortable: false },
+			{ field: 'actions', label: 'Ações', sortable: false }
 		],
 		sortOptions: {
 		  enabled: true,
@@ -54,6 +67,12 @@
 		  })
 		  .finally(() => this.loading = false);
 	  },
+		handleEditAction(id) {
+			console.log(id);
+		},
+		handleDeleteAction(id) {
+			console.log(id);
+		}
 	},
 	mounted() {
 	  this.fetchData();
@@ -62,4 +81,19 @@
   };
 </script>
 
+<style scoped>
+	.table-icon-btn {
+		background-color: transparent;
+		border: none;
+		font-size: 16px;
+	}
+
+	.table-icon-btn.delete {
+		color: rgb(250, 0, 0);
+	}
+
+	.table-icon-btn.edit {
+		color: rgb(0, 0, 150);
+	}
+</style>
   
