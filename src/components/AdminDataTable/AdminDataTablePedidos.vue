@@ -8,8 +8,9 @@
 			theme="polar-bear"
 			styleClass="vgt-table"
 			:search-options="{
-					enabled: true,
-		}"/>
+				enabled: true,
+			}"
+		/>
 	</div>
 	<div v-else>
 		<p>Carregando...</p>
@@ -38,7 +39,12 @@
 			dateInputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
 			dateOutputFormat: 'dd/MM/yyyy',
 		  },
-		  { field: 'total', label: 'Valor', sortable: true },
+		  {
+			field: 'total',
+			label: 'Valor',
+			sortable: true,
+    		formatFn: this.formatFn,
+		  },
 		],
 		sortOptions: {
 		  enabled: true,
@@ -63,6 +69,9 @@
 				console.error(error);
 			}).finally(() => this.loading = false);
 	  },
+	  formatFn: function(value) {
+		return 'R$ ' + value;
+	  }
 	},
 	mounted() {
 	  this.fetchData();
