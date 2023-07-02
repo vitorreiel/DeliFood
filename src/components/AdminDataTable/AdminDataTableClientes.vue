@@ -34,6 +34,7 @@
 			</template>
 		</VueTable>
 	</div>
+
 	<div v-else>
 		<p>Carregando...</p>
 	</div>
