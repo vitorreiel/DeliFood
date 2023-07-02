@@ -4,7 +4,6 @@
 			:rows="tableData"
 			:columns="columns"
 			:sort-options="sortOptions"
-			@sort-change="onSortChange"
 			theme="polar-bear"
 			styleClass="vgt-table"
 			:search-options="{
