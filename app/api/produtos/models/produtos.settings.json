@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "produtos",
+  "info": {
+    "name": "Produtos",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string"
+    },
+    "valor": {
+      "type": "string"
+    },
+    "descricao": {
+      "type": "string"
+    },
+    "id_restaurante": {
+      "type": "string"
+    },
+    "imagem": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "tipo": {
+      "type": "enumeration",
+      "enum": [
+        "comida",
+        "bebida",
+        "sobremesa"
+      ]
+    }
+  }
+}

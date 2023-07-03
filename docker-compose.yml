@@ -1,8 +1,15 @@
 version: '3'
 services:
+  web:
+    container_name: 'delifood'
+    build: .
+    ports:
+      - '3000:3000'
+    networks:
+      - strapi
+      
   strapi:
     container_name: 'strapi'
-#    build: .
     image: 'strapi/strapi:alpine'
     restart: unless-stopped
     env_file: .env
@@ -15,10 +22,7 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       NODE_ENV: ${NODE_ENV}
     volumes:
-#      - ./config:/opt/app/config
-      - ./src:/opt/app/src
-#      - ./package.json:/opt/package.json
-#      - ./public/uploads:/opt/app/public/uploads
+      - ./app:/srv/app
     ports:
       - '1337:1337'
     networks:
@@ -43,7 +47,10 @@ services:
       - '3306:3306'
     networks:
       - strapi
-
+      
+volumes:
+  strapi-data:
+  
 networks:
   strapi:
     name: strapi-network

@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "enderecos",
+  "info": {
+    "name": "Endereços",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "rua": {
+      "type": "string"
+    },
+    "bairro": {
+      "type": "string"
+    },
+    "numero": {
+      "type": "string"
+    },
+    "complemento": {
+      "type": "string"
+    },
+    "user_id": {
+      "via": "enderecos",
+      "plugin": "users-permissions",
+      "columnName": "user_id",
+      "model": "user"
+    }
+  }
+}

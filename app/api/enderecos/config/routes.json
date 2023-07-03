@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/enderecos",
+      "handler": "enderecos.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/enderecos/count",
+      "handler": "enderecos.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/enderecos/:id",
+      "handler": "enderecos.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/enderecos",
+      "handler": "enderecos.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/enderecos/:id",
+      "handler": "enderecos.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/enderecos/:id",
+      "handler": "enderecos.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

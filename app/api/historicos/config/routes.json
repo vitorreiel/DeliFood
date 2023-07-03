@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/historicos",
+      "handler": "historicos.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/historicos/count",
+      "handler": "historicos.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/historicos/:id",
+      "handler": "historicos.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/historicos",
+      "handler": "historicos.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/historicos/:id",
+      "handler": "historicos.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/historicos/:id",
+      "handler": "historicos.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

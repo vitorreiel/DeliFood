@@ -98,6 +98,16 @@ localhost:3000
 ```sh
 localhost:1337
 ```
+<br>
+
+> ##### *Nota: É necessário ter o Docker instalado em sua máquina.*
+
+<br>
+
+Faça o clone do repositório atual, entre no repositório e em seguida, execute o comando abaixo para iniciar o projeto:
+```sh
+docker compose up -d
+```
 
 
 <br>
@@ -123,6 +133,7 @@ localhost:1337
 </div>
 
 ---
+
 <br>
 
 ## Rotas da API REST utilizadas

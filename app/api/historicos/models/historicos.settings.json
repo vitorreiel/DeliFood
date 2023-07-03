@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "historicos",
+  "info": {
+    "name": "Historicos",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "endereco": {
+      "type": "string"
+    },
+    "data_hora": {
+      "type": "string"
+    },
+    "total": {
+      "type": "decimal"
+    },
+    "user_id": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "restaurante": {
+      "model": "restaurantes"
+    }
+  }
+}
