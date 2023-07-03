@@ -41,7 +41,7 @@
             async getHistory() {
                 const userData = JSON.parse(localStorage.getItem('USER'));
 
-                this.$axios.get("/historicos", { id_cliente: userData.user.id })
+                this.$axios.get("/historicos", { params: { 'user_id.id': userData.user.id } })
                     .then(async (response) => {
                         let data = response.data;
                         let iterator = 0;
