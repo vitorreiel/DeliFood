@@ -114,7 +114,7 @@ localhost:1337
    | Entidade | Criação | Leitura |  Atualização |  Remoção |
    |--- |--- |--- |--- |--- |
    | Clientes | X | X | X | X |
-   | Restaurantes | X |  | X | X |
+   | Restaurantes |  | X | X | X |
    | Produtos |  | X |  |  |
    | Endereços | X | X |  | X |
    | Pedidos | X |  |  |  |
