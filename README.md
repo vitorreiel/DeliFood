@@ -1,7 +1,7 @@
 # DeliFood
 <br>
 
-Uma empresa no ramo de entrega de refeições, por meio da internet.
+### Uma empresa no ramo de entrega de refeições, por meio da internet.
 
 <br>
 
@@ -28,11 +28,13 @@ Uma empresa no ramo de entrega de refeições, por meio da internet.
 ## Entidades ou Tabelas do sistema
 <br>
 
-    - Usuarios
-    - Produtos
+    - Clientes
+    - Admins
     - Restaurantes
+    - Produtos
     - Endereços
-    - Pedidos 
+    - Pedidos
+    - Históricos
 <br>
 
 ---
@@ -41,9 +43,9 @@ Uma empresa no ramo de entrega de refeições, por meio da internet.
 ## Principais funcionalidades da Aplicação
 <br>
 
-    - O usuário não registrado, pode conferir o cardápio fornecidos pelos restaurantes cadastrados.
-    - O usuário registrado, poderá selecionar seu pedido no restaurante desejado, selecionar o endereço de entrega e efetuar o pedido.
-    - O administrador terá total controle sobre os usuários, restaurantes e pedidos realizados, podendo então adicionar, remover e editá-los se assim desejar.
+    - O cliente não registrado, pode conferir os restaurantes cadastrados.
+    - O cliente registrado poderá selecionar qualquer restaurante desejado, efetuar a escolha do seu pedido, selecionar seu endereço de entrega já cadastrado, cadastrar um novo endereço ou deletar o endereço. Com o pedido realizado o usuário terá acesso a um histórico de pedidos, com todos os seus pedidos já realizados.
+    - O administrador terá controle sobre os clientes, restaurantes e pedidos realizados. O administrador pode criar, buscar, remover e editar clientes e restaurantes, além de visualizar e buscar todos os pedidos efetuados.
 <br>
 
 ---
@@ -53,6 +55,10 @@ Uma empresa no ramo de entrega de refeições, por meio da internet.
 <br>
 
     - VueJS v3.0
+    - Vue-Router
+    - Vuex
+    - Vue-good-table-next
+    - Axios
     - MySQL
     - Strapi
     - Docker e Docker Compose
@@ -62,39 +68,93 @@ Uma empresa no ramo de entrega de refeições, por meio da internet.
 <br>
 
 ## Iniciando a Aplicação
+
 <br>
 
-Comando para iniciar o projeto:
+## ⚠️ Atenção! ⚠️
+#### - É necessário ter o Docker instalado em sua máquina.
+#### - Na primeira execução do projeto, pode levar alguns minutos para baixar e iniciar os containers. Dito isso, apenas aguarde.
+
+<br>
+<br>
+
+Faça o clone do repositório atual. Entre na pasta "Delifood" e em seguida, execute o comando abaixo para iniciar o projeto:
 ```sh
 docker compose up -d
 ```
+
+<br>
+
+#### As URL de acesso são:
+
+<br>
+
+- Para o front-end com VueJS
+```sh
+localhost:3000
+```
+
+- Para o back-end do Strapi
+```sh
+localhost:1337
+```
+
+
 <br>
 
 ---
 <br>
 
-## Instalação de Dependências
+## Operações implementadas para cada entidade da aplicação
+
 <br>
 
-1° Etapa - Comando para baixar script de instalação Docker:
-```sh
-wget https://raw.githubusercontent.com/vitorreiel/DevOps-help/main/Install/Docker-Install/install-docker.sh
-```
+<div style="display: inline_block;" align="center">
+   
+   | Entidade | Criação | Leitura |  Atualização |  Remoção |
+   |--- |--- |--- |--- |--- |
+   | Clientes | X | X | X | X |
+   | Restaurantes | X | X | X | X |
+   | Produtos |  | X |  |  |
+   | Endereços | X | X |  | X |
+   | Pedidos | X |  |  |  |
+   | Históricos | X | X |  |  |
+
+</div>
+
+---
 <br>
 
-2° Etapa - Comando para dar permissão de execução para o script:
-```sh
-chmod +x install-docker.sh
-```
+## Rotas da API REST utilizadas
+
 <br>
 
-3° Etapa - Comando para executar o script:
-```sh
-./install-docker.sh
-```
+<div style="display: inline_block;" align="center">
+   
+   | Método HTTP | URL |
+   |--- |--- |
+   | POST | /auth/local |
+   | POST | /auth/local/register |
+   | GET | /enderecos |
+   | POST | /enderecos |
+   | DELETE | /enderecos/{id} |
+   | GET | /historicos |
+   | POST | /historicos |
+   | GET | /pedidos | 
+   | POST | /pedidos |
+   | GET | /restaurantes |   
+   | GET | /restaurantes/{id} |
+   | POST | /restaurantes |
+   | PUT | /restaurantes/{id} |
+   | DELETE | /restaurantes/{id} |
+   | GET | /users |
+   | GET | /users/{id} |
+   | POST | /users |
+   | PUT | /users/{id} |
+   | DELETE | /users/{id} |
+   | GET | /produtos |
 
-> ##### *Nota: Se você não estiver como usuário root no terminal, será solicitado inserir sua senha root na 3° Etapa para que as instalações possam ser feitas.*
-<br>
+</div>
 
 ---
 <div style="display: inline_block;">
