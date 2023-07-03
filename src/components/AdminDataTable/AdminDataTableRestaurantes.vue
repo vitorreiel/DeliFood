@@ -1,13 +1,4 @@
 <template>
-	<div class="add-btn-wrapper">
-		<router-link to="/administrator/restaurant">
-			<button class="add-btn">
-				<i class='bx bx-plus-circle'></i>
-				Adicionar restaurante
-			</button>
-		</router-link>
-	</div>
-
 	<div v-if="!this.loading">
 		<VueTable
 			:rows="tableData"
