@@ -60,16 +60,16 @@
         },
         methods: {
             validateStreet() {
-                this.streetValid = /^[a-zA-Z\s]+$/.test(this.street)
+                this.streetValid = /^[a-zA-Z\u00C0-\u017F\s]+$/.test(this.street)
             },
             validateNumber() {
                 this.numberValid = /^[0-9]+$/.test(this.number)
             },
             validateDistrict() {
-                this.districtValid = /^[a-zA-Z\s]+$/.test(this.district)
+                this.districtValid = /^[a-zA-Z\u00C0-\u017F\s]+$/.test(this.district)
             },
             validateComplement() {
-                this.complementValid = /^[a-zA-Z\s]+$/.test(this.complement)
+                this.complementValid = /^[a-zA-Z\u00C0-\u017F\s]+$/.test(this.complement)
             },
             submit(e) {
                 e.preventDefault();
@@ -98,7 +98,7 @@
             number() {
                 this.validateNumber()
             },
-            city() {
+            district() {
                 this.validateDistrict()
             },
             state() {

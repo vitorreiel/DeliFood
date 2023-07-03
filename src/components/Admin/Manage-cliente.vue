@@ -22,7 +22,7 @@
                     <label for="password">Senha: </label>
                     <input type="text" id="password" class="form-client-input" v-model="password" required>
                 </div>
-                <span v-if="!passwordValid" class="error">*Por favor, insira um password válido</span>
+                <span v-if="!passwordValid" class="error">*Por favor, insira uma senha válido</span>
             </div>
             <div class="btn-container">
                 <button class="button-form-client" type="submit" :disabled="!formValid">
@@ -70,7 +70,7 @@
         },
         methods: {
             validateName() {
-                this.nameValid = /^[a-zA-Z\s]+$/.test(this.name);
+                this.nameValid = /^[a-zA-Z\u00C0-\u017F\s]+$/.test(this.name);
             },
             validateEmail() {
                 this.emailValid = /^[\w\.-]+@[\w\.-]+\.\w+$/.test(this.email);
@@ -94,6 +94,7 @@
                     .finally(() => (this.loading = false));
             },
             submit(e) {
+                this.loading = true;
                 e.preventDefault();
 
                 if (this.password) {
@@ -107,6 +108,9 @@
                     })
                     .catch((error) => {
                         console.error(error);
+                    })
+                    .finally(() => {
+                        this.loading = false;
                     });
                 } else {
                     this.$axios.put(`/users/${this.client.id}`, {
@@ -118,6 +122,9 @@
                     })
                     .catch((error) => {
                         console.error(error);
+                    })
+                    .finally(() => {
+                        this.loading = false;
                     });
                 }
             }
@@ -129,11 +136,18 @@
             email() {
                 this.validateEmail()
             },
+            password() {
+                this.validatePassword();
+            }
         },
     }
 </script>
 
 <style scoped>
+    h1 {
+        margin: 16px 0 0 0;
+    }
+
     .card {
         display: flex;
         flex-wrap: wrap;
