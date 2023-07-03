@@ -3,7 +3,7 @@
         <section class="historic-list">
             <h3>Histórico de Pedidos</h3>
             <div v-for="historic in historics" class="historic">
-                <div class="">
+                <div>
                     <div class="photo-historic">
                         <img class="photo-historic-action" :src="'../../app/public/' + historic.restaurante.imagem[0].url">
                     </div>
@@ -22,8 +22,8 @@
                 </div>
             </div>
 
-            <div v-if="historics.length == 0">
-                <h5>Não há restaurantes registrados</h5>
+            <div class="requests-historic" v-if="historics.length == 0">
+                <h4>Você não tem pedidos registrados!</h4>
             </div>
         </section>
     </div>
@@ -176,5 +176,11 @@
     .product-historic-total {
         text-align: center;
     }
+
+    .requests-historic {
+        position: absolute; 
+        margin-top: 25px;
+    }
+
 
 </style>
