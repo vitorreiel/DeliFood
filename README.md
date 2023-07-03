@@ -45,7 +45,7 @@
 
     - O cliente não registrado, pode conferir os restaurantes cadastrados.
     - O cliente registrado poderá selecionar qualquer restaurante desejado, efetuar a escolha do seu pedido, selecionar seu endereço de entrega já cadastrado, cadastrar um novo endereço ou deletar o endereço. Com o pedido realizado o usuário terá acesso a um histórico de pedidos, com todos os seus pedidos já realizados.
-    - O administrador terá controle sobre os clientes, restaurantes e pedidos realizados. O administrador pode criar, buscar, remover e editar clientes e restaurantes, além de visualizar e buscar todos os pedidos efetuados.
+    - O administrador terá controle sobre os clientes, restaurantes e pedidos realizados. O administrador pode criar, buscar, remover e editar clientes, também pode editar, buscar e remover restaurantes. Além de visualizar e buscar todos os pedidos efetuados.
 <br>
 
 ---
@@ -99,6 +99,7 @@ localhost:3000
 localhost:1337
 ```
 
+
 <br>
 
 ---
@@ -113,7 +114,7 @@ localhost:1337
    | Entidade | Criação | Leitura |  Atualização |  Remoção |
    |--- |--- |--- |--- |--- |
    | Clientes | X | X | X | X |
-   | Restaurantes | X | X | X | X |
+   | Restaurantes | X |  | X | X |
    | Produtos |  | X |  |  |
    | Endereços | X | X |  | X |
    | Pedidos | X |  |  |  |
@@ -122,7 +123,6 @@ localhost:1337
 </div>
 
 ---
-
 <br>
 
 ## Rotas da API REST utilizadas
