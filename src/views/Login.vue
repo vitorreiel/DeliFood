@@ -6,7 +6,7 @@
             <label class="login-label" for="email">E-mail</label>
             <input class="login-input" type="email" placeholder="Digite seu e-mail" v-model="email" autofocus />
             <label class="login-label" for="password">Senha</label>
-            <input class="login-input" type="password" placeholder="Digite sua senha" v-model="password" />
+            <input class="login-input" type="password" placeholder="Digite sua senha" v-model="password" @keyup.enter="login" />
             <button class="button-login" @click="login">Acessar</button>
         </section>
     </div>
