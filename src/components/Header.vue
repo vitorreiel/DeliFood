@@ -2,18 +2,18 @@
     <header>
         <nav>
             <ul>
-                <li v-if="!isLoggedIn">
+                <li v-if="!isLoggedIn && isLoginPage">
                     <router-link class="secondary-button"  to="/register">
-                        Cadastro
+                        Cadastrar-se
                     </router-link>
                 </li>
                 <li v-if="!isLoggedIn && isLoginPage">
-                    <router-link class="primary-button"  to="/home">
+                    <router-link class="secondary-button"  to="/home">
                         Restaurantes
                     </router-link>
                 </li>
                 <li v-if="!isLoggedIn && !isLoginPage">
-                    <router-link class="primary-button" to="/">
+                    <router-link class="secondary-button" to="/">
                         Entrar
                     </router-link>
                 </li>
@@ -130,20 +130,33 @@
         border-radius: 2px;
         font-size: 16px;
         font-weight: bold;
-        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         transition: all ease-in-out 350ms;
     }
 
-    .primary-button:hover {
-        background-color: #E61919;
+    .primary-button:hover{
+        background-color: #990808;
         color: #fff;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .secondary-button {
         color: #fff;
+        background-color: #990808;
         font-weight: bold;
         padding: 8px 16px;
         font-size: 16px;
+        padding: 8px 24px;
+        border-radius: 2px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        transition: all ease-in-out 350ms;
     }
+
+    .secondary-button:hover {
+        background-color: #fff;
+        color: black;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
 </style>
   
