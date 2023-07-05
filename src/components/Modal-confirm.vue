@@ -20,14 +20,25 @@ export default {
     },
     methods: {
         async sendButton() {
+            
             const pedidoData = JSON.parse(localStorage.getItem("PEDIDO"));
+            
+            // formatação da data e hora
+            const currentDate = new Date();
+            const year = currentDate.getFullYear();
+            const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+            const day = currentDate.getDate().toString().padStart(2, '0');
+            const hours = currentDate.getHours().toString().padStart(2, '0');
+            const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+            const seconds = currentDate.getSeconds().toString().padStart(2, '0');
+            const formattedDateTime = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
 
             const body = {
                 "endereco": `${pedidoData.endereco.rua} ${pedidoData.endereco.numero}, ${pedidoData.endereco.complemento}, ${pedidoData.endereco.bairro}`,
                 "user_id": pedidoData.user.id,
                 "total": parseFloat(pedidoData.total),
                 "restaurante": pedidoData.produtos[0].id_restaurante,
-                "data_hora": new Date()
+                "data_hora": formattedDateTime
             };
 
             this.$axios.post("/historicos", body)

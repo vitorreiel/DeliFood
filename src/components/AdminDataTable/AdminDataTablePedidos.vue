@@ -31,20 +31,8 @@
 		  { field: 'id', label: 'ID', sortable: true },
 		  { field: 'restaurante.nome', label: 'Restaurante', sortable: false },
 		  { field: 'user_id.username', label: 'Usuário', sortable: false },
-		  { 
-			field: 'data_hora',
-			label: 'Data',
-			sortable: true,
-			type: 'date',
-			dateInputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
-			dateOutputFormat: 'dd/MM/yyyy',
-		  },
-		  {
-			field: 'total',
-			label: 'Valor',
-			sortable: true,
-    		formatFn: this.formatFn,
-		  },
+		  { field: 'data_hora', label: 'Data/Hora', sortable: true },
+		  { field: 'total',	label: 'Valor',	sortable: true, formatFn: this.formatFn, },
 		],
 		sortOptions: {
 		  enabled: true,
