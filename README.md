@@ -56,7 +56,6 @@
 
     - VueJS v3.0
     - Vue-Router
-    - Vuex
     - Vue-good-table-next
     - Axios
     - MySQL
